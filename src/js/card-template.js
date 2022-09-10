@@ -1,7 +1,7 @@
 import { loaderOff } from './loader';
 import { filmGenre } from './fetchData';
 
-export default async function (data) {
+export default function (data) {
   loaderOff();
   return data
     .map(el => {
