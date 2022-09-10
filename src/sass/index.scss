@@ -1,5 +1,10 @@
 @import './common';
 @import './container';
+
+@import './utils/reset';
+@import './utils/hidden';
+
 @import './header';
 @import './cardStyle';
+@import './modal-film';
 @import './footer';

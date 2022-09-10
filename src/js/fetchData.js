@@ -9,4 +9,5 @@ export async function trendFilms(page = 1) {
 
 export async function filmGenre(ids) {
   const axiosParams = { params: { api_key: API_KEY, page } };
+  return;
 }
