@@ -51,11 +51,20 @@
 .header__logo {
   display: flex;
   margin-right: 10px;
+  cursor: pointer;
+  text-decoration: none;
+  align-items: baseline;
+}
+
+.my-library__icon-film {
+  margin-right: 10px;
 }
 
 .header__logo--name {
   display: none;
+
   @media screen and (min-width: 768px) {
+    align-items: baseline;
     font-weight: 500;
     font-size: 30px;
     line-height: 35px;
@@ -80,6 +89,7 @@
 }
 
 .header__nav-list--item {
+  text-decoration: none;
   display: flex;
   font-weight: 500;
   font-size: 12px;
@@ -89,7 +99,14 @@
   text-transform: uppercase;
   color: #ffffff;
   cursor: pointer;
+}
 
+.header__nav-list--home {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.header__nav-border {
   &:hover,
   &:focus {
     border-bottom: 3px solid #ff001b;
@@ -133,6 +150,7 @@
   &:hover,
   &:focus {
     background-color: #ff6b01;
+    border: none;
   }
 
   @media screen and (min-width: 768px) {

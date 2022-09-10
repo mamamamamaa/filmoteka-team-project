@@ -1,6 +1,8 @@
 import { loaderOff } from './loader';
 
+
 export default function (data, genres) {
+
   loaderOff();
   return data
     .map(el => {
