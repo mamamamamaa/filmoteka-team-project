@@ -107,10 +107,7 @@
 }
 
 .header__nav-border {
-  &:hover,
-  &:focus {
-    border-bottom: 3px solid #ff001b;
-  }
+  border-bottom: 3px solid #ff001b;
 }
 
 .header__btn {
