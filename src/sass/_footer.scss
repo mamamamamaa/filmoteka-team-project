@@ -34,9 +34,11 @@
   font-size: 14px;
   line-height: 1.14;
   color: #545454;
+
   &:nth-child(1) {
     margin-right: 5px;
   }
+
   @media screen and (max-width: 767px) {
     &:first-child {
       margin-bottom: 10px;
@@ -49,5 +51,12 @@
   @media screen and (min-width: 1280px) {
     font-size: 16px;
     line-height: 1.19;
+  }
+}
+
+.show-hover {
+  &:hover,
+  &:focus {
+    color: #2196f3;
   }
 }
