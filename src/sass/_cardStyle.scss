@@ -31,8 +31,6 @@
 }
 
 .card-container {
-  font-family: 'Roboto';
-  font-weight: 500;
   @media (min-width: 320px) {
     font-size: 12px;
     line-height: 1.16;
@@ -51,6 +49,8 @@
 }
 
 .film-title {
+  font-weight: 500;
+  font-family: 'Roboto';
   margin: 0;
   padding: 0;
   color: rgba(0, 0, 0, 1);
@@ -58,5 +58,7 @@
 }
 
 .info-container {
+  font-weight: 500;
+  font-family: 'Roboto';
   color: rgba(255, 107, 8, 1);
 }
