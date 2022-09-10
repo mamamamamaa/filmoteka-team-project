@@ -1,0 +1,19 @@
+.library-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.library-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  list-style: none;
+}
+
+.library-box {
+  background-color: red;
+  width: 300px;
+  height: 300px;
+}
