@@ -1,4 +1,8 @@
+import { Loading } from "notiflix";
+import { loaderOff } from "./loader";
+
 export default function (data) {
+  loaderOff();
   return data
     .map(el => {
       const reliseDate = el.release_date
