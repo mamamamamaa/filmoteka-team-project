@@ -157,9 +157,9 @@ header.container {
  }
 
  .search__input{
-   display: flex;
-   align-items: center;
-   
+    display: flex;
+    align-items: center;
+    outline: none;   
 
     border: none;
     border-bottom: 0.5px solid #FFFFFF;
@@ -167,6 +167,14 @@ header.container {
     width: 280px;
     color: #FFFFFF;
 
+    @media screen and (min-width: 768px) {
+      width: 336px;
+    }
+
+    @media screen and (min-width: 1280px) {
+      width: 394px;
+    }
+    
     &::placeholder{
         font-family: 'Roboto';
         font-style: normal;
@@ -183,8 +191,7 @@ header.container {
  .btn__search{
     background-color:transparent;
     border: none;
-    outline: none;
-    
+    outline: none;    
 
     position: absolute;
     top: 0;
