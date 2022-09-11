@@ -1,4 +1,4 @@
-import { trendFilms, searchFilms } from './js/fetchData';
+import { trendFilms, filmGenre, searchFilms } from './js/fetchData';
 import card from './js/card-template';
 
 const refs = {
