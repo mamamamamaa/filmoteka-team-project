@@ -157,6 +157,26 @@ color: #000000
 .modal-film__item:not(:last-child) {
     padding-bottom: 8px;
 }
+.modal-film__vote {
+    display: inline-flex;
+    width: 36px;
+    justify-content: center;
+    align-items: center;
+    
+    color: #ffffff;
+    background: #FF6B01;
+    border-radius: 5px;
+}
+.modal-film__votes {
+    display: inline-flex;
+    width: 36px;
+    justify-content: center;
+    align-items: center;
+    color: #000000;
+    background: #F7F7F7;
+    border-radius: 5px
+}
+
 
 .modal-film__about {
 margin-bottom: 8px;
