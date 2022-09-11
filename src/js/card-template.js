@@ -1,5 +1,6 @@
 import { loaderOff } from './loader';
 import { pagination } from './pagination';
+import { pagination2 } from './pagination2';
 
 export default function (data, genres) {
   loaderOff();
@@ -37,6 +38,7 @@ export default function (data, genres) {
               </div>`;
   });
 
-  pagination(markup);
+  // pagination(markup); //v1
+  pagination2(markup);   //v2
   return '';
 }
