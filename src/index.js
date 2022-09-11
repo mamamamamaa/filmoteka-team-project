@@ -11,3 +11,8 @@ filmGenre().then(a => {
     refs.cardBox.innerHTML += card(e.data.results, a);
   });
 });
+
+// searchFilms('Fury', 1).then(e => {
+//   console.log(e);
+//   refs.cardBox.innerHTML += card(e.data.results);
+// });
