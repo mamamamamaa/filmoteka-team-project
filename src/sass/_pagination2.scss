@@ -1,17 +1,17 @@
 #stuff {
 	margin-bottom: 15px;
-    display: flex;
 }
 #stuff > * {
 	display: none;
 }
 .pagination2 {
+	display: flex;
+	justify-content: center;
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
 	border: 1px solid #ccc;
 	overflow: auto;
-	display: inline-block;
 	border-radius: 5px;
 }
 .pagination2 li {

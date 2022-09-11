@@ -1,7 +1,4 @@
 export function pagination2(markup) {
-    // for (var i = 1; i <= 95; i++) {
-    //     document.getElementById('stuff').innerHTML += '<div>' + i + '</div>';
-    // }
     document.getElementById('stuff').innerHTML += markup.join('');
 
     var SlickPagination = function (options) {
@@ -25,7 +22,7 @@ export function pagination2(markup) {
 
         for (var i = 0; i < this.items.length; i++) {
             if (i < this.perPage) {
-                this.items[i].style.display = 'block';
+                this.items[i].style.display = 'inline-block';
             }
         }
 
@@ -133,7 +130,7 @@ export function pagination2(markup) {
     new SlickPagination({
         itemsContainer: document.getElementById('stuff'),
         paginationContainer: document.querySelector('.pagination2'),
-        visiblePages: 1,
+        visiblePages: 3,
     });
 
     
