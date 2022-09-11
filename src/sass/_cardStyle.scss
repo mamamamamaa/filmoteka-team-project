@@ -18,17 +18,17 @@
   }
 }
 
-// .card-container {
-//   @media (min-width: 320px) {
-//     width: 280px;
-//   }
-//   @media (min-width: 768px) {
-//     width: calc(100% / 2 - 32px);
-//   }
-//   @media (min-width: 1280px) {
-//     width: calc(100% / 3 - 32px);
-//   }
-// }
+.cards-container {
+  @media (min-width: 320px) {
+    width: 280px;
+  }
+  @media (min-width: 768px) {
+    width: calc(100% / 2 - 32px);
+  }
+  @media (min-width: 1280px) {
+    width: calc(100% / 3 - 32px);
+  }
+}
 
 .card-container {
   @media (min-width: 320px) {
