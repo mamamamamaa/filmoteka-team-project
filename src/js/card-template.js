@@ -15,15 +15,15 @@ export default function (data, genres) {
       });
     }
 
-    let genreStr;
-    if (genre.length === 1) {
-      genreStr = `${genre[0]}`;
-    } else if (genre.length === 2) {
-      genreStr = `${genre[0]}, ${genre[1]}`;
-    } else if (genre.length > 2) {
-      genreStr = `${genre[0]}, ${genre[1]}, Other`;
-    }
-    return `<div class="card-container">
+      let genreStr;
+      if (genre.length === 1) {
+        genreStr = `${genre[0]}`;
+      } else if (genre.length === 2) {
+        genreStr = `${genre[0]}, ${genre[1]}`;
+      } else if (genre.length > 2) {
+        genreStr = `${genre[0]}, ${genre[1]}, Other`;
+      }
+      return `<div class="card-container" data-id="${el.id}">
                   <img src="https://image.tmdb.org/t/p/w500${
                     el.poster_path
                   }" alt="${
