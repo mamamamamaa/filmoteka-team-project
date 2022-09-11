@@ -1,4 +1,4 @@
-import { trendFilms } from './js/fetchData';
+import { trendFilms, searchFilms } from './js/fetchData';
 import card from './js/card-template';
 
 const refs = {
@@ -7,4 +7,8 @@ const refs = {
 
 trendFilms().then(e => {
   refs.cardBox.innerHTML += card(e.data.results);
+});
+
+searchFilms('Thor').then(e => {
+  console.log(e);
 });
