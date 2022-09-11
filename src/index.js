@@ -9,6 +9,7 @@ trendFilms().then(e => {
   refs.cardBox.innerHTML += card(e.data.results);
 });
 
-searchFilms('Thor').then(e => {
-  console.log(e);
-});
+// searchFilms('Fury', 1).then(e => {
+//   console.log(e);
+//   refs.cardBox.innerHTML += card(e.data.results);
+// });
