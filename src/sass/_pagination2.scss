@@ -1,41 +1,43 @@
 #stuff {
-	margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 #stuff > * {
-	display: none;
+  display: none;
 }
 .pagination2 {
-	display: flex;
-	justify-content: center;
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-	border: 1px solid #ccc;
-	overflow: auto;
-	border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: auto;
 }
 .pagination2 li {
-	float: left;
+  float: left;
 }
 .pagination2 li a {
-	height: 36px;
-	width: 36px;
-	line-height: 36px;
-	display: block;
-	color: #444;
-	text-align: center;
-	text-decoration: none;
-	font-size: 14px;
-	border-left: 1px solid #ccc;
+  height: 36px;
+  width: 36px;
+  line-height: 36px;
+  display: block;
+  color: #444;
+  text-align: center;
+  text-decoration: none;
+  font-size: 14px;
 }
 .pagination2 li a:hover {
-	background: #ccc;
+  background: rgb(233, 227, 227);
+  border-radius: 5px;
 }
 .pagination2 li a.active {
-	background: #004990;
-	color: #fff;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  background-color: #ff6b08;
+  width: 40px;
+  height: 40px;
+  color: #fff;
 }
 .pagination2 .disabled {
-	opacity: .5;
-	pointer-events: none;
+  opacity: 0.5;
+  pointer-events: none;
 }

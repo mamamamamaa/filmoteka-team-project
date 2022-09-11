@@ -57,7 +57,7 @@ export function pagination2(markup) {
 
                         for (var j = 0; j < self.items.length; j++) {
                             self.items[j].style.display =
-                                j >= startItem && j <= endItem ? 'block' : 'none';
+                                j >= startItem && j <= endItem ? 'inline-block' : 'none';
                         }
 
                         if (
