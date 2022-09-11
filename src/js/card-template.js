@@ -1,8 +1,6 @@
 import { loaderOff } from './loader';
 
-
 export default function (data, genres) {
-
   loaderOff();
   return data
     .map(el => {
@@ -25,7 +23,7 @@ export default function (data, genres) {
       } else if (genre.length > 2) {
         genreStr = `${genre[0]}, ${genre[1]}, Other`;
       }
-      return `<div class="card-container">
+      return `<div class="card-container" data-id="${el.id}">
                   <img src="https://image.tmdb.org/t/p/w500${
                     el.poster_path
                   }" alt="${
