@@ -18,12 +18,11 @@
     openMenuBtn: document.querySelector('[futer-modal-open]'),
     closeMenuBtn: document.querySelector('[futer-modal-close]'),
     menu: document.querySelector('[futer-modal]'),
-    body: document.querySelector('.body'),
   };
   refs.openMenuBtn.addEventListener('click', toggleMenu);
   refs.closeMenuBtn.addEventListener('click', toggleMenu);
   function toggleMenu() {
     refs.menu.classList.toggle('is-hidden');
-    refs.body.classList.toggle('no-scroll');
+    document.body.classList.toggle('no-scroll');
   }
 })();
