@@ -15,11 +15,18 @@
     />
   </head>
   <body>
-    <include src="./partials/myLibraryHeader.html"></include>
-    <include src="./partials/library-cards-container.html"></include>
-    <include src="./partials/footer.html"></include>
-    <include src="./partials/foter-modal.html"></include>
-
+    <div class="wrapper">
+      <header>
+        <include src="./partials/myLibraryHeader.html"></include>
+      </header>
+      <main class="content">
+        <include src="./partials/library-cards-container.html"></include>
+      </main>
+      <footer>
+        <include src="./partials/footer.html"></include>
+        <include src="./partials/foter-modal.html"></include>
+      </footer>
+    </div>
     <!-- появляющееся модальное окно ФУТЕР-->
     <script src="./js/futer-modal/futer-modal-menu.js"></script>
     <script src="./js/futer-modal/futer-modal.js"></script>
