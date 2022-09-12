@@ -26,9 +26,13 @@ export default function (data) {
             <li class="modal-film__item">Genre</li>
           </ul>
           <ul class="modal-film__list values list">
-            <li class="modal-film__item">${data.vote_average} / ${
+            <li class="modal-film__item">
+             <span class="modal-film__vote">${
+               data.vote_average
+             }</span> / <span class="modal-film__votes">${
     data.vote_count
-  }</li>
+  }</span>
+            </li>
             <li class="modal-film__item">${data.popularity}</li>
             <li class="modal-film__item">${
               data.original_title || data.original_name
