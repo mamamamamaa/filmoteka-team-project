@@ -1,6 +1,7 @@
 import { trendFilms, filmGenre, searchFilms } from './js/fetchData';
 import card from './js/card-template';
 import toggleModal from './js/modal-film-open-close';
+import localStorageApi from './js/localStorageApi';
 
 const refs = {
   cardBox: document.querySelector('.cards-container'),
