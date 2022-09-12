@@ -2,6 +2,12 @@
 модальное окно
 ---------- =========================================== */
 
+.no-scroll {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
 /* оверлей модального окна */
 .backdrop-m {
   position: fixed;

@@ -1,3 +1,14 @@
+.card-section {
+  @media (min-width: 320px) {
+    padding-top: 10px;
+    padding-bottom: 30px;
+  }
+  @media (min-width: 768px) {
+    padding-top: 44px;
+    padding-bottom: 44px;
+  }
+}
+
 .cards-container {
   display: flex;
   flex-wrap: wrap;
