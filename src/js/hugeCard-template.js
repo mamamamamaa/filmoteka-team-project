@@ -3,6 +3,7 @@ const NO_POSTER = '/src/images/no-poster.jpg';
 
 export default function (data) {
   loaderOff();
+  console.log('data:', data)
   const poster = data.poster_path
     ? `https://image.tmdb.org/t/p/w500${data.poster_path}`
     : NO_POSTER;
@@ -45,8 +46,8 @@ export default function (data) {
           ${data.overview}
         </p>
         <div class="modal-film__btn-wrapper">
-                    <button class="modal-film__btn js-btnWatched">add to Watched</button>
-                    <button class="modal-film__btn js-btnQueue">add to queue</button>
+                    <button class="modal-film__btn js-btnWatched" value=${data.id}>add to Watched</button>
+                    <button class="modal-film__btn js-btnQueue" value=${data.id}>add to queue</button> 
                 </div>
       </div>
     </div>

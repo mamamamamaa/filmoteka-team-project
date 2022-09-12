@@ -1,5 +1,3 @@
-let allMovie = {};
-
   const btnWatched = document.querySelector(".js-btnWatched");
   const btnQueue = document.querySelector(".js-btnQueue");
         
@@ -9,25 +7,22 @@ let allMovie = {};
   btnWatched.addEventListener("click", addWatchedList);
   btnQueue.addEventListener("click", addQueueList);
 
-  function addWatchedList() {
-    const watchedList = JSON.parse(localStorage.getItem("watched")) || [];
-    checkList(watchedList, allMovie.movie, "watched");
-    // console.log('watchedList', watchedList);
+  function addWatchedList(e) {
+    const list = JSON.parse(localStorage.getItem("watched")) || [];
+    checkList({ list, state: "watched", id:e.target.value}); 
   }
 
-  function addQueueList() {
-    const queueList = JSON.parse(localStorage.getItem("queue")) || [];
-    checkList(queueList, allMovie.movie, "queue");
-    console.log('queueList', queueList);
-    // console.log('allMovie', allMovie.movie);
+  function addQueueList(e) {
+    console.log('event:', e);
+    const list = JSON.parse(localStorage.getItem("queue")) || [];
+    checkList({ list, state: "queue", id:e.target.value});
   }
 
-  function checkList(list, movie, state) {
-      localStorage.setItem(state, JSON.stringify(list));
-      list.push(movie);
-      localStorage.setItem(state, JSON.stringify(list));
-    
+  function checkList({list, state, id}) {
+      if  (!list.find((item) => item === id)) {
+      const films = [...list];
+      films.push(id);
+      localStorage.setItem(state, JSON.stringify(films)); 
+    } 
   }
-
-
-
+        
