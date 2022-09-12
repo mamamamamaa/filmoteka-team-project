@@ -7,15 +7,11 @@ export default function (data) {
   const poster = data.poster_path
     ? `https://image.tmdb.org/t/p/w500${data.poster_path}`
     : NO_POSTER;
-  const genres = data.genres.filter(e => e.name).join(', ');
+  const genres = [];
+  data.genres.filter(e => {
+    genres.push(e.name);
+  });
   return `
-  <div class="modal-film">
-    <button class="modal-film__close-btn" data-modal-close>
-      <svg class="close" width="18" height="18">
-        <use href="/src/images/symbol-defs.svg#close"></use>
-      </svg>
-    </button>
-    <div class="modal-film__wrapper">
       <img
         src="${poster}"
         alt="${data.title || data.name}"
@@ -38,7 +34,7 @@ export default function (data) {
             <li class="modal-film__item">${
               data.original_title || data.original_name
             }</li>
-            <li class="modal-film__item">${genres}</li>
+            <li class="modal-film__item">${genres.join(', ')}</li>
           </ul>
         </div>
         <h3 class="modal-film__about">About</h3>
@@ -49,7 +45,5 @@ export default function (data) {
                     <button class="modal-film__btn js-btnWatched" value=${data.id}>add to Watched</button>
                     <button class="modal-film__btn js-btnQueue" value=${data.id}>add to queue</button> 
                 </div>
-      </div>
-    </div>
-  </div>`;
+      </div>`;
 }

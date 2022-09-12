@@ -1,5 +1,5 @@
 import { loaderOff } from './loader';
-const NO_POSTER = '/src/images/no-poster.jpg';
+const NO_POSTER = `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcjBqfRNytcTv3gLsDnnoDKhEyqSS9D-TVsA&usqp=CAU`;
 
 export default function (data, genres, searchGenresFn) {
   loaderOff();

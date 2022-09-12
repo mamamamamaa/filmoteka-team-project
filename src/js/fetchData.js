@@ -28,3 +28,8 @@ export async function searchFilms(query, page = 1) {
   loaderOn();
   return await axios.get(`${BASE_URL}search/movie`, axiosParams);
 }
+
+export async function filmInfo(movie_id) {
+  const axiosParams = { params: { api_key: API_KEY, language: 'en-US' } };
+  return await axios.get(`${BASE_URL}movie/${movie_id}`, axiosParams);
+}

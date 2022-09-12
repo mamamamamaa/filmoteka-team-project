@@ -1,12 +1,3 @@
-  const btnWatched = document.querySelector(".js-btnWatched");
-  const btnQueue = document.querySelector(".js-btnQueue");
-        
-  const watchedList = JSON.parse(localStorage.getItem("watched")) || [];
-  const queueList = JSON.parse(localStorage.getItem("queue")) || [];
-
-  btnWatched.addEventListener("click", addWatchedList);
-  btnQueue.addEventListener("click", addQueueList);
-
   function addWatchedList(e) {
     const list = JSON.parse(localStorage.getItem("watched")) || [];
     checkList({ list, state: "watched", id:e.target.value}); 
@@ -25,4 +16,14 @@
       localStorage.setItem(state, JSON.stringify(films)); 
     } 
   }
-        
+
+  export default function writeLocalStorage() {
+  const btnWatched = document.querySelector(".js-btnWatched");
+  const btnQueue = document.querySelector(".js-btnQueue");
+  btnWatched.addEventListener("click", addWatchedList);
+  btnQueue.addEventListener("click", addQueueList);
+  console.log('btnQueue', btnWatched)
+  console.log(btnQueue)
+  }
+
+  
