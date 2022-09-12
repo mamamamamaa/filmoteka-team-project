@@ -11,20 +11,33 @@ import localStorageApi from './js/localStorageApi';
 
 const refs = {
   cardBox: document.querySelector('.cards-container'),
+  searchForm: document.querySelector('.search__form'),
 };
 
-// filmGenre().then(a => {
-//   trendFilms().then(e => {
-//     refs.cardBox.innerHTML += card(e.data.results, a, searchGenres);
-// btnUpToTop();
-// topFunction();
-//   });
-// });
+let query = null;
 
-filmGenre().then(a => {
-  searchFilms('Fury', 1).then(e => {
-    refs.cardBox.innerHTML += card(e.data.results, a, searchGenres);
+filmGenre().then(genres => {
+  trendFilms().then(films => {
+    refs.cardBox.innerHTML += card(films.data.results, genres, searchGenres);
+    btnUpToTop();
+    topFunction();
   });
-  btnUpToTop();
-  topFunction();
+});
+
+refs.searchForm.addEventListener('submit', e => {
+  e.preventDefault();
+  console.log(e.target.search.value);
+  if (e.target.search.value === '' || query === e.target.search.value) {
+    return;
+  }
+  query = e.target.search.value;
+  e.target.search.value = '';
+  filmGenre().then(genres => {
+    searchFilms(query, 1).then(films => {
+      refs.cardBox.innerHTML = '';
+      refs.cardBox.innerHTML += card(films.data.results, genres, searchGenres);
+    });
+    btnUpToTop();
+    topFunction();
+  });
 });
