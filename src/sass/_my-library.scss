@@ -10,3 +10,17 @@ body {
 .content {
   flex: 1 1 auto;
 }
+
+footer {
+  max-height: 100px;
+  flex: 0 0 100px;
+
+  @media screen and (min-width: 768px) {
+    max-height: 79px;
+    flex: 0 0 79px;
+  }
+  @media screen and (min-width: 1280px) {
+    max-height: 77px;
+    flex: 0 0 77px;
+  }
+}
