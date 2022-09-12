@@ -1,19 +1,26 @@
 
-<div class="my-library">
-  <div class="container">
-    <div class="header__wrapper">
-      <a href="./index.html" class="header__logo ">
-        <svg class="my-library__icon-film" width="24" height="24">
-          <use href="./images/my-library/symbol-defs.svg#icon-film-1"></use>
-        </svg><span class="header__logo--name">Filmoteka</span>
-      </a>
-     
-        <ul class="header__nav-list">
-          <li class="header__nav-list--item"><a href="./index.html" class="header__nav-list--home">Home</a></li>
-         <li class="header__nav-list--item header__nav-border">My library</li>
-        </ul>
-      
-    </div>
+<header >
+  <div class="my-library ">
+  <div class="container header-restriction">
+      <div class="navigation">
+      <a class="logo__link" href="./index.html">
+
+        <svg class="logo" width="24" height="24">
+          <use href="/src/images/symbol-defs.svg#icon-film-1"></use>
+        </svg>
+        <span class="logo__part">Filmoteka</span>
+
+    </a>
+    <ul class="nav__list">
+        <li class="nav__item">
+           <a id="Home"class="nav__link" href="/src/index.html">Home</a> 
+        </li>
+        <li  class="nav__item">
+           <a id="library" class="nav__link current" href="/src/my-library.html">my library</a> 
+        </li>
+    </ul>
+    
+   </div> 
 
     <div class="header__btn">
       <button type="button" class="header__btn--item">Watched</button>
@@ -22,3 +29,4 @@
     </div>
   </div>
  </div>
+</header>

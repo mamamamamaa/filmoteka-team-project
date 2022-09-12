@@ -1,4 +1,4 @@
-const refs = {
+export const refs = {
   cardBox: document.querySelector('.cards-container'),
   modal: document.querySelector('[data-modal]'),
   closeModalBtn: document.querySelector('[data-modal-close]'),
@@ -13,30 +13,34 @@ refs.backDropFilmCard.addEventListener('click', backDropFilm);
 
 let isModalShown = false;
 
-export default function toggleModal() {
+export function toggleModal() {
   refs.modal.classList.toggle('is-hidden');
+
   isModalShown = !isModalShown;
   if (isModalShown) {
     window.addEventListener('keydown', onEscKeyPress);
   } else {
     window.removeEventListener('keydown', onEscKeyPress);
   }
+
+  document.body.classList.toggle('no-scroll');
+
 }
 
 
-function bacc(event) {
+export function bacc(event) {
   if (event.currentTarget === event.target) {
     refs.back.classList.add('is-hidden');
   }
 }
 
-function backDropFilm(event) {
+export function backDropFilm(event) {
   if (event.currentTarget === event.target) {
     refs.backDropFilmCard.classList.toggle('is-hidden');
   }
 }
 
-function onEscKeyPress(event) {
+export function onEscKeyPress(event) {
   if (event.code === 'Escape') {
     toggleModal();
   }
