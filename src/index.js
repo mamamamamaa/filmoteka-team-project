@@ -19,9 +19,11 @@ const refs = {
 filmGenre().then(a => {
   searchFilms('Fury', 1).then(e => {
     refs.cardBox.innerHTML += card(e.data.results, a);
-  });
-});
-
+  })
 btnUpToTop();
 topFunction();
+
+
+});
+
 
