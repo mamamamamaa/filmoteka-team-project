@@ -13,17 +13,27 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    />
   </head>
 
   <body>
-    <include src="./partials/btnUp.html"></include>
-    <include src="./partials/header.html"></include>
-    <include src="./partials/cards-container.html"></include>
-    <include src="./partials/modal-film.html"></include>
-    <include src="./partials/footer.html"></include>
-    <include src="./partials/foter-modal.html"></include>
-    
+    <div class="wrapper">
+      <header>
+        <include src="./partials/btnUp.html"></include>
+        <include src="./partials/header.html"></include>
+      </header>
+      <main class="content">
+        <include src="./partials/cards-container.html"></include>
+        <include src="./partials/modal-film.html"></include>
+      </main>
+      <footer>
+        <include src="./partials/footer.html"></include>
+        <include src="./partials/foter-modal.html"></include>
+      </footer>
+    </div>
 
     <!-- появляющееся модальное окно ФУТЕР-->
     <script src="./js/futer-modal/futer-modal-menu.js"></script>
