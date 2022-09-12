@@ -158,3 +158,19 @@
     padding: 13px 41px 12px 41px;
   }
 }
+
+.library__empty {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.9;
+
+  color: #545454;
+
+  padding-top: 30px;
+  display: flex;
+  justify-content: center;
+
+  @media screen and (min-width: 768px) {
+    font-size: 18px;
+  }
+}
