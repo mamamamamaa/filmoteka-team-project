@@ -3,7 +3,7 @@ export function pagination2(markup) {
 
     var SlickPagination = function (options) {
         var self = this;
-        this.perPage = 3;
+        this.perPage = 9;
         this.visiblePages = 1;
 
         if (!options.itemsContainer || !options.paginationContainer) {
@@ -39,15 +39,15 @@ export function pagination2(markup) {
                         self.paginationContainer.querySelector('.active').innerText
                     );
                     var newPage =
-                        page === '<<'
-                            ? 1
-                            : page == '>>'
-                                ? self.totalPages
-                                : page == '<'
-                                    ? currentPage - 1
-                                    : page == '>'
-                                        ? currentPage + 1
-                                        : parseInt(page);
+                      page === '<<'
+                        ? 1
+                        : page == '>>'
+                        ? self.totalPages
+                        : page == '🡨'
+                        ? currentPage - 1
+                        : page == '🡪'
+                        ? currentPage + 1
+                        : parseInt(page);
 
                     if (newPage > 0 && newPage <= self.totalPages) {
                         var startItem = parseInt(newPage * self.perPage) - self.perPage;
@@ -91,21 +91,21 @@ export function pagination2(markup) {
             var nextDisabled =
                 currentPage === this.totalPages ? ' class="disabled"' : '';
             var backLinks =
-                this.totalPages > this.visiblePages
-                    ? '<li><a href="#"' +
-                    backDisabled +
-                    '><<</a></li><li><a href="#"' +
-                    backDisabled +
-                    '><</a></li>'
-                    : '';
+              this.totalPages > this.visiblePages
+                ? '<li class="visually-hidden"><a href="#"' +
+                  backDisabled +
+                  '><<</a></li><li><a class="link-arrow" href="#"' +
+                  backDisabled +
+                  '>🡨</a></li>'
+                : '';
             var nextLinks =
-                this.totalPages > this.visiblePages
-                    ? '<li><a href="#"' +
-                    nextDisabled +
-                    '>></a></li><li><a href="#"' +
-                    nextDisabled +
-                    '>>></a></li>'
-                    : '';
+              this.totalPages > this.visiblePages
+                ? '<li><a class="link-arrow" href="#"' +
+                  nextDisabled +
+                  '>🡪</a></li><li class="visually-hidden"><a href="#"' +
+                  nextDisabled +
+                  '>>></a></li>'
+                : '';
 
             for (var i = startPage; i <= endPage; i++) {
                 var active = i === currentPage ? ' class="active"' : '';
