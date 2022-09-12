@@ -3,8 +3,8 @@ import card from './js/card-template';
 import hugeCard from './js/hugeCard-template';
 import { searchGenres } from './js/searchGenres';
 
-import toggleModal from './js/modal-film-open-close';
-import toggleModal from './js/futer-modal';
+import './js/modal-film-open-close';
+import './js/futer-modal';
 import { btnUpToTop, topFunction } from './js/btnUp';
 
 import localStorageApi from './js/localStorageApi';
