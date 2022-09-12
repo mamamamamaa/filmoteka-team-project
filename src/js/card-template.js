@@ -5,7 +5,6 @@ export default function (data, genres, searchGenresFn) {
   loaderOff();
   return data
     .map(el => {
-      console.log(el);
       const reliseDate = el.release_date ? el.release_date.slice(0, 4) : 'N/A';
       const poster = el.poster_path
         ? `https://image.tmdb.org/t/p/w500${el.poster_path}`

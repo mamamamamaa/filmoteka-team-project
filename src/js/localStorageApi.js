@@ -1,33 +1,30 @@
-let allMovie = {};
+// let allMovie = {};
 
-  const btnWatched = document.querySelector(".js-btnWatched");
-  const btnQueue = document.querySelector(".js-btnQueue");
-        
-  const watchedList = JSON.parse(localStorage.getItem("watched")) || [];
-  const queueList = JSON.parse(localStorage.getItem("queue")) || [];
+//   const btnWatched = document.querySelector(".js-btnWatched");
+//   const btnQueue = document.querySelector(".js-btnQueue");
 
-  btnWatched.addEventListener("click", addWatchedList);
-  btnQueue.addEventListener("click", addQueueList);
+//   const watchedList = JSON.parse(localStorage.getItem("watched")) || [];
+//   const queueList = JSON.parse(localStorage.getItem("queue")) || [];
 
-  function addWatchedList() {
-    const watchedList = JSON.parse(localStorage.getItem("watched")) || [];
-    checkList(watchedList, allMovie.movie, "watched");
-    // console.log('watchedList', watchedList);
-  }
+//   btnWatched.addEventListener("click", addWatchedList);
+//   btnQueue.addEventListener("click", addQueueList);
 
-  function addQueueList() {
-    const queueList = JSON.parse(localStorage.getItem("queue")) || [];
-    checkList(queueList, allMovie.movie, "queue");
-    console.log('queueList', queueList);
-    // console.log('allMovie', allMovie.movie);
-  }
+//   function addWatchedList() {
+//     const watchedList = JSON.parse(localStorage.getItem("watched")) || [];
+//     checkList(watchedList, allMovie.movie, "watched");
+//     // console.log('watchedList', watchedList);
+//   }
 
-  function checkList(list, movie, state) {
-      localStorage.setItem(state, JSON.stringify(list));
-      list.push(movie);
-      localStorage.setItem(state, JSON.stringify(list));
-    
-  }
+//   function addQueueList() {
+//     const queueList = JSON.parse(localStorage.getItem("queue")) || [];
+//     checkList(queueList, allMovie.movie, "queue");
+//     console.log('queueList', queueList);
+//     // console.log('allMovie', allMovie.movie);
+//   }
 
+//   function checkList(list, movie, state) {
+//       localStorage.setItem(state, JSON.stringify(list));
+//       list.push(movie);
+//       localStorage.setItem(state, JSON.stringify(list));
 
-
+//   }
