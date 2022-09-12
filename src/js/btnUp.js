@@ -1,20 +1,24 @@
-  function btnToUp() {
-    const myButton = document.getElementById('myBtn'); 
+export function btnUpToTop() {
+    const myButton = document.getElementById('myBtn')
 
-window.onscroll = function () {
+     window.onscroll = function () {
   scrollFunction();
-};
-
-function scrollFunction() {
+     }
+    
+    
+    function scrollFunction() {
   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
     myButton.style.display = 'block';
   } else {
     myButton.style.display = 'none';
   }
 }
+    myButton.addEventListener('click', topFunction)
+    
+}
 
-  myButton.addEventListener('click', topFunction);  
- }
+   
+ 
 
 // When the user clicks on the myButton, scroll to the top of the document
  export function topFunction() {
@@ -22,4 +26,4 @@ function scrollFunction() {
   document.documentElement.scrollTop = 0;
 }
 
-export default btnToUp;
+
