@@ -14,7 +14,6 @@
 }
 .pagination2 li {
   float: left;
-  
 }
 .pagination2 li a {
   width: 40px;
@@ -28,8 +27,6 @@
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 500;
-  
-  
 }
 .pagination2 li a:hover {
   background: rgb(233, 227, 227);
@@ -52,13 +49,10 @@
   margin: -1px;
   border: 0;
   padding: 0;
-  
+
   white-space: nowrap;
   clip-path: inset(100%);
   clip: rect(0 0 0 0);
   overflow: hidden;
 }
-.link-arrow {
-  background: #f7f7f7;
-  border-radius: 5px;
-}
+

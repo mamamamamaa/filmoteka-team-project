@@ -4,7 +4,7 @@ export function pagination2(markup) {
     var SlickPagination = function (options) {
         var self = this;
         this.perPage = 9;
-        this.visiblePages = 1;
+        this.visiblePages = 2;
 
         if (!options.itemsContainer || !options.paginationContainer) {
             console.warn('Slick Pagination: Missing Required Settings');
@@ -94,13 +94,13 @@ export function pagination2(markup) {
               this.totalPages > this.visiblePages
                 ? '<li class="visually-hidden"><a href="#"' +
                   backDisabled +
-                  '><<</a></li><li><a class="link-arrow" href="#"' +
+                  '><<</a></li><li><a href="#"' +
                   backDisabled +
                   '>🡨</a></li>'
                 : '';
             var nextLinks =
               this.totalPages > this.visiblePages
-                ? '<li><a class="link-arrow" href="#"' +
+                ? '<li><a href="#"' +
                   nextDisabled +
                   '>🡪</a></li><li class="visually-hidden"><a href="#"' +
                   nextDisabled +
@@ -130,7 +130,7 @@ export function pagination2(markup) {
     new SlickPagination({
         itemsContainer: document.getElementById('stuff'),
         paginationContainer: document.querySelector('.pagination2'),
-        visiblePages: 3,
+        visiblePages: 2,
     });
 
     

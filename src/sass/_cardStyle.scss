@@ -29,7 +29,7 @@
   }
 }
 
-.cards-container {
+.card-container {//pagination v1 .cards-container; v2 .card-container;
   @media (min-width: 320px) {
     width: 280px;
   }
