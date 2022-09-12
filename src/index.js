@@ -11,14 +11,14 @@ const refs = {
   box: document.querySelector('.backdrop is-hidden'),
 };
 
-// filmGenre().then(a => {
-//   trendFilms().then(e => {
-//     refs.cardBox.innerHTML += card(e.data.results, a);
-//   });
-// });
-
-filmGenre().then(geners => {
-  searchFilms('Fury', 1).then(e => {
-    refs.cardBox.innerHTML += card(e.data.results, geners, searchGenres);
+filmGenre().then(a => {
+  trendFilms().then(e => {
+    refs.cardBox.innerHTML += card(e.data.results, a);
   });
 });
+
+// filmGenre().then(geners => {
+//   searchFilms('Fury', 1).then(e => {
+//     refs.cardBox.innerHTML += card(e.data.results, geners, searchGenres);
+//   });
+// });
