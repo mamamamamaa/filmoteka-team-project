@@ -1,11 +1,14 @@
 import { loaderOff } from './loader';
+const NO_POSTER = '/src/images/no-poster.jpg';
 
 export default function (data, genres) {
   loaderOff();
   return data
     .map(el => {
       const reliseDate = el.release_date ? el.release_date.slice(0, 4) : 'N/A';
-
+      const poster = el.poster_path
+        ? `https://image.tmdb.org/t/p/w500${el.poster_path}`
+        : NO_POSTER;
       let genre = [];
       for (const id of el.genre_ids) {
         genres.data.genres.forEach(e => {
@@ -24,9 +27,7 @@ export default function (data, genres) {
         genreStr = `${genre[0]}, ${genre[1]}, Other`;
       }
       return `<div class="card-container" data-id="${el.id}">
-                  <img src="https://image.tmdb.org/t/p/w500${
-                    el.poster_path
-                  }" alt="${
+                  <img src="${poster}" alt="${
         el.original_title || el.original_name
       }" class="film-img" />
                   <h2 class="film-title">${el.title || el.name}</h2>
