@@ -8,6 +8,9 @@ import { btnUpToTop, topFunction } from './js/btnUp';
 
 import writeLocalStorage from './js/localStorageApi';
 
+import Pagination from 'tui-pagination';
+import 'tui-pagination/dist/tui-pagination.css';
+
 const refs = {
   cardBox: document.querySelector('.cards-container'),
   searchForm: document.querySelector('.search__form'),
@@ -15,15 +18,6 @@ const refs = {
   closeModalBtn: document.querySelector('[data-modal-close]'),
   modaHugelCard: document.querySelector('.modal-film__wrapper'),
 };
-const container = document.querySelector('#tui-pagination-container');
-const options = {
-  totalItems: 0,
-  itemsPerPage: 15,
-  visiblePages: 5,
-  page: 1,
-};
-const pagination = new Pagination(container, options);
-const page = pagination.getCurrentPage();
 
 let query = null;
 
@@ -84,3 +78,29 @@ trendFilmsFn();
 refs.searchForm.addEventListener('submit', handleFormSubmit);
 
 refs.cardBox.addEventListener('click', handleCardClick);
+
+
+
+
+const container = document.querySelector('#tui-pagination-container');
+const options = {
+  totalItems: 0,
+  itemsPerPage: 15,
+  visiblePages: 5,
+  page: 1,
+};
+const pagination = new Pagination(container, options);
+const page = pagination.getCurrentPage();
+  filmGenre(currentPage)
+    .then(a => {
+      trendFilms(currentPage).then(e => {
+        if (e.data.results.length === 0) {
+          console.log('Something wrong');
+          return;
+        }
+        // console.log(e.data.page, e.data.results);
+
+        refs.cardBox.innerHTML = card(e.data.results, a);
+      });
+    })
+    .catch(error => console.log(error.message));
