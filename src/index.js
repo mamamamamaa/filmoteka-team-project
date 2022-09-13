@@ -54,7 +54,6 @@ refs.cardBox.addEventListener('click', evt => {
   filmInfo(id).then(e => {
     refs.modaHugelCard.innerHTML = '';
     refs.modaHugelCard.insertAdjacentHTML('beforeend', hugeCard(e.data));
-    writeLocalStorage(e.data);
   });
 });
 
