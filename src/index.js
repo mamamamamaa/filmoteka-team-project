@@ -41,6 +41,7 @@ async function trendFilmsFn(page) {
 async function searchFilmsFn(query, page) {
   const search = await searchFilms(query, page);
   renderCard(search.data.results);
+  pagination.reset(search.data.total_results = 20000);
   btnUpToTop();
   topFunction();
 }
@@ -100,6 +101,7 @@ function updatePagination(event) {
   // console.log(currentPage, event);
 
   trendFilmsFn(currentPage);
+
   //  .then(films => {
   //    renderCard(films.data.results);
   //  })
