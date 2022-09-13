@@ -20,6 +20,11 @@ export default function (data, genres, searchGenresFn) {
                       <span class="film-relise">${reliseDate}</span>
                   </div>
               </div>`;
-    })
-    .join('');
+  }).join('');
+
+  //pagination change _cardStyle.scss v1 to .cards-container; v2 to .card-container;
+  // pagination(markup); //v1
+  // pagination2(markup);   //v2
+  // paginationTui(markup);
+  // return '';
 }

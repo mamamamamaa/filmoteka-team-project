@@ -1,0 +1,36 @@
+.pagination {
+  margin-top: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagination__btn {
+  background: #fff;
+  outline: none;
+  border: none;
+  width: 14px;
+  height: 16px;
+  cursor: pointer;
+  &:not(:last-child) {
+    margin-right: 17px;
+  }
+}
+
+.pagination__btn-active {
+  border-radius: 5px;
+  border: 1px solid transparent;
+  background-color: #ff6b08;
+  width: 40px;
+  height: 40px;
+  color: #fff;
+  margin: 0;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}

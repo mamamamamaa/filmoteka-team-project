@@ -8,6 +8,9 @@ import { btnUpToTop, topFunction } from './js/btnUp';
 
 import writeLocalStorage from './js/localStorageApi';
 
+import Pagination from 'tui-pagination';
+// import 'tui-pagination/dist/tui-pagination.css';
+
 const refs = {
   cardBox: document.querySelector('.cards-container'),
   searchForm: document.querySelector('.search__form'),
@@ -32,6 +35,7 @@ async function trendFilmsFn(page) {
   renderCard(films.data.results);
   btnUpToTop();
   topFunction();
+  return await trendFilms(page);
 }
 
 async function searchFilmsFn(query, page) {
@@ -70,7 +74,46 @@ async function handleCardClick(e) {
   refs.closeModalBtn.addEventListener('click', cardModal);
 }
 
-trendFilmsFn();
+
+
+
+
+
+
+
+const container = document.querySelector('#tui-pagination-container');
+const options = {
+  totalItems: 0,
+  itemsPerPage: 15,
+  visiblePages: 5,
+  page: 1,
+};
+const pagination = new Pagination(container, options);
+const page = pagination.getCurrentPage();
+
+trendFilmsFn(page)
+  .then(films => {
+      renderCard(films.data.results);
+      pagination.reset(films.data.total_results);
+  })
+  .catch(error => console.log(error.message));
+
+pagination.on('afterMove', updatePagination);
+
+function updatePagination(event) {
+  const currentPage = event.page;
+  // console.log(currentPage, event);
+
+  trendFilmsFn(currentPage);
+  //  .then(films => {
+  //    renderCard(films.data.results);
+  //  })
+  //  .catch(error => console.log(error.message));
+}
+
+
+
+
 
 refs.searchForm.addEventListener('submit', handleFormSubmit);
 
