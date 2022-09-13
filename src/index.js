@@ -56,6 +56,9 @@ refs.cardBox.addEventListener('click', evt => {
     refs.modaHugelCard.insertAdjacentHTML('beforeend', hugeCard(e.data));
     writeLocalStorage(e.data);
   });
+
+  btnUpToTop();
+  topFunction();
 });
 
 function cardModal() {
