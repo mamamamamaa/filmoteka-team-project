@@ -45,6 +45,8 @@ async function filmInfoFn(info) {
   refs.modaHugelCard.innerHTML = '';
   refs.modaHugelCard.insertAdjacentHTML('beforeend', hugeCard(info.data));
   writeLocalStorage(info.data);
+  btnUpToTop();
+  topFunction();
 }
 
 async function handleFormSubmit(e) {
@@ -69,13 +71,6 @@ async function handleCardClick(e) {
   refs.cardBox.addEventListener('click', cardModal);
   refs.closeModalBtn.addEventListener('click', cardModal);
 }
-
-
-  filmInfo(id).then(e => {
-    refs.modaHugelCard.innerHTML = '';
-    refs.modaHugelCard.insertAdjacentHTML('beforeend', hugeCard(e.data));
-    writeLocalStorage(e.data);
-  });
 
   
 trendFilmsFn();
