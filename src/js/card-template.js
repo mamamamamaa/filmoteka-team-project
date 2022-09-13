@@ -3,10 +3,10 @@ const NO_POSTER = '/src/images/no-poster.jpg';
 import { pagination } from './pagination';
 import { pagination2 } from './pagination2';
 
-
 export default function (data, genres) {
   loaderOff();
-  const markup = data.map(el => {
+  //const markup = // remove return and join('') for pagination v1 or v2
+  return data.map(el => {
     const reliseDate = el.release_date ? el.release_date.slice(0, 4) : 'N/A';
     const poster = el.poster_path
       ? `https://image.tmdb.org/t/p/w500${el.poster_path}`
@@ -38,10 +38,11 @@ export default function (data, genres) {
                       <span class="film-relise">${reliseDate}</span>
                   </div>
               </div>`;
-  });
+  }).join('');
 
   //pagination change _cardStyle.scss v1 to .cards-container; v2 to .card-container;
   // pagination(markup); //v1
-  pagination2(markup);   //v2
-  return '';
+  // pagination2(markup);   //v2
+  // paginationTui(markup);
+  // return '';
 }
