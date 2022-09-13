@@ -18,38 +18,58 @@ const refs = {
 
 let query = null;
 
-filmGenre().then(genres => {
-  trendFilms().then(films => {
-    refs.cardBox.innerHTML += card(films.data.results, genres, searchGenres);
-    btnUpToTop();
-    topFunction();
-  });
-});
+function cardModal() {
+  refs.modal.classList.toggle('is-hidden');
+}
 
-refs.searchForm.addEventListener('submit', e => {
+async function renderCard(data) {
+  refs.cardBox.innerHTML = '';
+  refs.cardBox.innerHTML += card(data, await filmGenre(), searchGenres);
+}
+
+async function trendFilmsFn(page) {
+  const films = await trendFilms(page);
+  renderCard(films.data.results);
+  btnUpToTop();
+  topFunction();
+}
+
+async function searchFilmsFn(query, page) {
+  const search = await searchFilms(query, page);
+  renderCard(search.data.results);
+  btnUpToTop();
+  topFunction();
+}
+
+async function filmInfoFn(info) {
+  refs.modaHugelCard.innerHTML = '';
+  refs.modaHugelCard.insertAdjacentHTML('beforeend', hugeCard(info.data));
+  writeLocalStorage(info.data);
+}
+
+async function handleFormSubmit(e) {
   e.preventDefault();
   if (e.target.search.value === '' || query === e.target.search.value) {
     return;
   }
   query = e.target.search.value;
   e.target.search.value = '';
-  filmGenre().then(genres => {
-    searchFilms(query, 1).then(films => {
-      refs.cardBox.innerHTML = '';
-      refs.cardBox.innerHTML += card(films.data.results, genres, searchGenres);
-    });
-    btnUpToTop();
-    topFunction();
-  });
-});
+  await searchFilmsFn(query, 1);
+}
 
-refs.cardBox.addEventListener('click', evt => {
-  if (evt.target.className === 'cards-container') return;
-  const card = evt.target.closest('.card-container');
+async function handleCardClick(e) {
+  if (e.target.className === 'cards-container') {
+    return;
+  }
+
+  const card = e.target.closest('.card-container');
   const id = card.dataset.id;
-
+  const info = await filmInfo(id);
+  filmInfoFn(info);
   refs.cardBox.addEventListener('click', cardModal);
   refs.closeModalBtn.addEventListener('click', cardModal);
+}
+
 
   filmInfo(id).then(e => {
     refs.modaHugelCard.innerHTML = '';
@@ -57,10 +77,10 @@ refs.cardBox.addEventListener('click', evt => {
     writeLocalStorage(e.data);
   });
 
-  btnUpToTop();
-  topFunction();
-});
+  
+trendFilmsFn();
 
-function cardModal() {
-  refs.modal.classList.toggle('is-hidden');
-}
+
+refs.searchForm.addEventListener('submit', handleFormSubmit);
+
+refs.cardBox.addEventListener('click', handleCardClick);
