@@ -35,6 +35,7 @@ async function trendFilmsFn(page) {
   renderCard(films.data.results);
   btnUpToTop();
   topFunction();
+  return await trendFilms(page);
 }
 
 async function searchFilmsFn(query, page) {
@@ -73,11 +74,9 @@ async function handleCardClick(e) {
   refs.closeModalBtn.addEventListener('click', cardModal);
 }
 
-trendFilmsFn();
 
-refs.searchForm.addEventListener('submit', handleFormSubmit);
 
-refs.cardBox.addEventListener('click', handleCardClick);
+
 
 
 
@@ -91,16 +90,31 @@ const options = {
 };
 const pagination = new Pagination(container, options);
 const page = pagination.getCurrentPage();
-  filmGenre(currentPage)
-    .then(a => {
-      trendFilms(currentPage).then(e => {
-        if (e.data.results.length === 0) {
-          console.log('Something wrong');
-          return;
-        }
-        // console.log(e.data.page, e.data.results);
 
-        refs.cardBox.innerHTML = card(e.data.results, a);
-      });
-    })
-    .catch(error => console.log(error.message));
+trendFilmsFn(page)
+  .then(films => {
+      renderCard(films.data.results);
+      pagination.reset(films.data.total_results);
+  })
+  .catch(error => console.log(error.message));
+
+pagination.on('afterMove', updatePagination);
+
+function updatePagination(event) {
+  const currentPage = event.page;
+  // console.log(currentPage, event);
+
+  trendFilmsFn(currentPage);
+  //  .then(films => {
+  //    renderCard(films.data.results);
+  //  })
+  //  .catch(error => console.log(error.message));
+}
+
+
+
+
+
+refs.searchForm.addEventListener('submit', handleFormSubmit);
+
+refs.cardBox.addEventListener('click', handleCardClick);
