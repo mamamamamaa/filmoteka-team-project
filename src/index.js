@@ -41,10 +41,10 @@ async function searchFilmsFn(query, page) {
   topFunction();
 }
 
-async function filmInfoFn(id) {
-  const info = await filmInfo(id);
+async function filmInfoFn(info) {
   refs.modaHugelCard.innerHTML = '';
   refs.modaHugelCard.insertAdjacentHTML('beforeend', hugeCard(info.data));
+  writeLocalStorage(info.data);
 }
 
 async function handleFormSubmit(e) {
@@ -64,11 +64,10 @@ async function handleCardClick(e) {
 
   const card = e.target.closest('.card-container');
   const id = card.dataset.id;
-
+  const info = await filmInfo(id);
+  filmInfoFn(info);
   refs.cardBox.addEventListener('click', cardModal);
   refs.closeModalBtn.addEventListener('click', cardModal);
-
-  filmInfoFn(id);
 }
 
 trendFilmsFn();

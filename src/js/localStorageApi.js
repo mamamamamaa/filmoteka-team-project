@@ -23,7 +23,6 @@ function addWatchedList(data) {
 }
 
 function addQueueList(data) {
-  console.log(data);
   const list = JSON.parse(localStorage.getItem('queue')) || [];
   checkList(
     {
