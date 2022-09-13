@@ -1,0 +1,15 @@
+h2 {
+    max-width: 300px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+h2:before {
+    content: " "; /* unicode space Alt+255 */
+    display: block;
+    // background: url(shadow.png) top right repeat-y;
+    height: 100%;
+    width: 20px;
+    float: right;
+    position: relative;
+}
