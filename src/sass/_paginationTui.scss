@@ -7,7 +7,12 @@
 //     margin: 50px 0 0 0;
 //   }
 }
-
+.tui-pagination .tui-first-child.tui-is-selected {
+    border-left: 1px solid red !important;
+}
+.tui-pagination .tui-is-selected:hover {
+    background-color: #4b96e6 !important;
+}
 .tui-page-btn.tui-prev.hide-prev,
 .tui-page-btn.tui-first.tui-is-disabled,
 .tui-page-btn.tui-next.hide-next,
@@ -32,7 +37,7 @@
   margin-right: 0;
 }
 
-.tui-pagination * {
+.tui-pagination .tui-page-btn {
   display: flex;
   border: none;
   align-items: center;

@@ -9,7 +9,7 @@ import { btnUpToTop, topFunction } from './js/btnUp';
 import writeLocalStorage from './js/localStorageApi';
 
 import Pagination from 'tui-pagination';
-import 'tui-pagination/dist/tui-pagination.css';
+// import 'tui-pagination/dist/tui-pagination.css';
 
 const refs = {
   cardBox: document.querySelector('.cards-container'),
