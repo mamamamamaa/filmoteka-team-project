@@ -1,0 +1,129 @@
+.tui-pagination {
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  margin: 40px 0 0 0;
+//   @include min-width('medium') {
+//     margin: 50px 0 0 0;
+//   }
+}
+
+.tui-page-btn.tui-prev.hide-prev,
+.tui-page-btn.tui-first.tui-is-disabled,
+.tui-page-btn.tui-next.hide-next,
+.tui-page-btn.tui-last.tui-is-disabled,
+.tui-page-btn.tui-next-is-ellip.change-next,
+.tui-page-btn.tui-prev-is-ellip.change-prev {
+  display: none;
+}
+
+// @include min-width('medium') {
+//   .tui-page-btn.tui-next-is-ellip.change-next,
+//   .tui-page-btn.tui-prev-is-ellip.change-prev {
+//     display: flex;
+//   }
+// }
+
+.tui-pagination .tui-next {
+  margin-left: 0;
+}
+
+.tui-pagination .tui-prev {
+  margin-right: 0;
+}
+
+.tui-pagination * {
+  display: flex;
+  border: none;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+  color: var(--text-color);
+  color: #000;
+  color: red;
+  font-family: var(--main-font);
+  font-family: 'Roboto';
+//   @include font(12px, 500, 16px);
+  transition: all 250ms ease-in-out;
+  &:hover {
+    background: var(--brand-orange-color);
+    background: #FF6B08;
+    color: var(--primary-white-color);
+    color: #fff;
+  }
+}
+
+.tui-pagination .tui-is-selected {
+  color: var(--primary-white-color);
+  color: #fff;
+  background: var(--brand-orange-color);
+  background: #FF6B08;
+  border-color: var(--brand-orange-color);
+  border-color: #FF6B08;
+}
+
+.tui-pagination .tui-is-disabled:hover {
+  background: transparent;
+  border: none;
+}
+
+.tui-pagination .hide-first,
+.tui-pagination .hide-last {
+  // background: var(--footer-bg-color);
+  background: rgba(247, 247, 247, 0.5);
+}
+
+.tui-pagination .tui-first-is-ellip:hover,
+.tui-pagination .tui-last-is-ellip:hover,
+.tui-pagination .hide-last:hover,
+.tui-pagination .hide-first:hover {
+  background: var(--brand-orange-color);
+  background: #FF6B08;
+}
+
+.tui-pagination .tui-prev-is-ellip:hover > .tui-ico-ellip,
+.tui-pagination .tui-next-is-ellip:hover > .tui-ico-ellip,
+.tui-pagination .hide-first:hover > .tui-ico-first,
+.tui-pagination .hide-last:hover > .tui-ico-last {
+  fill: var(--primary-white-color);
+  fill: #fff;
+}
+
+.tui-pagination .tui-is-selected:hover {
+  background: var(--brand-orange-color);
+  background: #FF6B08;
+}
+
+.tui-pagination .tui-ico-ellip {
+  margin-top: 0;
+}
+
+.tui-pagination .tui-first-child.tui-is-selected {
+  border-left: none;
+}
+
+.tui-pagination .tui-ico-prev,
+.tui-pagination .tui-ico-next,
+.tui-pagination .tui-ico-first,
+.tui-pagination .tui-ico-last,
+.tui-pagination .tui-ico-ellip {
+  background-image: none;
+}
+
+.tui-pagination .tui-ico-ellip,
+.tui-pagination .tui-ico-first,
+.tui-pagination .tui-ico-last {
+  width: 16px;
+  height: 16px;
+  fill: var(--text-color);
+  fill: #000;
+  transition: all 250ms ease-in-out;
+}
+
+.tui-pagination .tui-last-child.tui-is-selected {
+  border-right: 1px solid var(--brand-orange-color);
+  border-right: 1px solid #FF6B08;;
+}

@@ -22,7 +22,6 @@ const page = pagination.getCurrentPage();
 
 filmGenre(page)
   .then(a => {
-    console.log(page);
     trendFilms().then(e => {
       if (e.data.results.length === 0) {
         console.log('Something wrong');
@@ -38,7 +37,7 @@ pagination.on('afterMove', updatePagination);
 
 function updatePagination(event) {
   const currentPage = event.page;
-  console.log(currentPage, event);
+  // console.log(currentPage, event);
 
   filmGenre(currentPage)
     .then(a => {
@@ -47,7 +46,7 @@ function updatePagination(event) {
           console.log('Something wrong');
           return;
         }
-        console.log(e.data.page, e.data.results);
+        // console.log(e.data.page, e.data.results);
 
         refs.cardBox.innerHTML = card(e.data.results, a);
       });
