@@ -6,7 +6,8 @@
     <title>Filmoteka</title>
     <link rel="stylesheet" href="./sass/index.scss" />
     <!-- <script type="module" src="./index.js"></script> -->
-
+    <script type="module" src="./library.js"></script>
+    <!-- ------- -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -15,14 +16,19 @@
     />
   </head>
   <body>
-    <include src="./partials/myLibraryHeader.html"></include>
-    <include src="./partials/library-cards-container.html"></include>
-    <include src="./partials/footer.html"></include>
-    <include src="./partials/foter-modal.html"></include>
+    <div class="wrapper">
+      <include src="./partials/myLibraryHeader.html"></include>
 
+      <main class="content">
+        <include src="./partials/library-cards-container.html"></include>
+      </main>
+      <footer>
+        <include src="./partials/footer.html"></include>
+        <include src="./partials/foter-modal.html"></include>
+      </footer>
+    </div>
     <!-- появляющееся модальное окно ФУТЕР-->
-    <script src="./js/futer-modal/futer-modal-menu.js"></script>
-    <script src="./js/futer-modal/futer-modal.js"></script>
+
     <!-- ------- -->
   </body>
 </html>
