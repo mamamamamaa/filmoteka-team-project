@@ -6,7 +6,7 @@ import { searchGenres } from './js/searchGenres';
 import toggleModal from './js/futer-modal';
 import { btnUpToTop, topFunction } from './js/btnUp';
 
-import localStorageApi from './js/localStorageApi';
+import writeLocalStorage from './js/localStorageApi';
 
 const refs = {
   cardBox: document.querySelector('.cards-container'),
@@ -54,6 +54,7 @@ refs.cardBox.addEventListener('click', evt => {
   filmInfo(id).then(e => {
     refs.modaHugelCard.innerHTML = '';
     refs.modaHugelCard.insertAdjacentHTML('beforeend', hugeCard(e.data));
+    writeLocalStorage(e.data);
   });
 });
 
