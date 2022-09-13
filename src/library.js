@@ -10,8 +10,9 @@ const refs = {
     container: document.querySelector('.cards-container'),
     modaHugelCard: document.querySelector('.modal-film__wrapper'),
     modal: document.querySelector('[data-modal]'),
+    closeModalBtn: document.querySelector('[data-modal-close]'),
+};
 
-}
 
 const getKey = key => {
     try {
@@ -33,22 +34,21 @@ refs.container.addEventListener('click', handleCardClick);
 markupLibWatched();
 
 function markupLibQueue() {
+    refs.queue.classList.add('active')
+    refs.watched.classList.remove('active')
+
     refs.container.innerHTML = "";
 
     if (!dataQueueLocalStorage) {
         refs.container.innerHTML = "";
-        console.log('no data');
-        // if (!document.querySelector('.libraafterbeginpty')) {
         refs.container.insertAdjacentHTML('afterbegin', '<p class="library__empty">Oops! There`s nothing to show there!</p>')
-        // }
-        // refs.container.insertAdjacentHTML('afterend', '<p class="library__empty">Oops! There`s nothing to show there!</p>')
     }
     else {
-        console.log('done data');
         const dataQueueFromLocalStorage = dataQueueLocalStorage.map(({ id, date, genres, title, poster, vote
         }) => {
             const genresString = genres.join(", ")
             const reliseDate = date.slice(0, 4);
+            const voteToFix = vote.toPrecision(2);
             return `<div class="card-container" data-id="${id}">
                   <img src="https://image.tmdb.org/t/p/w500${poster}" alt="${title
                 }" class="film-img" />
@@ -56,32 +56,31 @@ function markupLibQueue() {
                   <div class="info-container">
                       <span class="film-genres">${genresString} |</span>
                       <span class="film-relise">${reliseDate}</span>
+                      <span class="lib-modal-film__vote">${voteToFix}</span>
                   </div>
               </div>`;
         })
             .join('');
-        console.log(dataQueueFromLocalStorage);
         refs.container.insertAdjacentHTML('beforeend', dataQueueFromLocalStorage)
     }
 }
 
 
 function markupLibWatched() {
+    refs.watched.classList.add('active')
+    refs.queue.classList.remove('active')
+
     refs.container.innerHTML = "";
     if (!dataWatchedLocalStorage) {
         refs.container.innerHTML = "";
-        // if (!document.querySelector('.library__empty')) {
         refs.container.insertAdjacentHTML('afterbegin', '<p class="library__empty">Oops! There`cos nothing to show there!</p>')
-        // }
-        // console.log('no data');
-        // refs.container.insertAdjacentHTML('afterend', '<p class="library__empty">Oops! Theres nothing to show there!</p>')
     }
     else {
-        console.log('done data');
         const dataWatchedFromLocalStorage = dataWatchedLocalStorage.map(({ id, date, genres, title, poster, vote
         }) => {
             const genresString = genres.join(", ")
             const reliseDate = date.slice(0, 4);
+            const voteToFix = vote.toPrecision(2);
             return `<div class="card-container" data-id="${id}">
                   <img src="https://image.tmdb.org/t/p/w500${poster}" alt="${title
                 }" class="film-img" />
@@ -89,11 +88,11 @@ function markupLibWatched() {
                   <div class="info-container">
                       <span class="film-genres">${genresString} |</span>
                       <span class="film-relise">${reliseDate}</span>
+                      <span class="lib-modal-film__vote">${voteToFix}</span>
                   </div>
               </div>`;
         })
             .join('');
-        console.log(dataWatchedFromLocalStorage);
         refs.container.insertAdjacentHTML('beforeend', dataWatchedFromLocalStorage)
     }
 }
