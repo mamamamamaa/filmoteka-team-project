@@ -74,18 +74,11 @@ async function handleCardClick(e) {
   refs.closeModalBtn.addEventListener('click', cardModal);
 }
 
-
-
-
-
-
-
-
 const container = document.querySelector('#tui-pagination-container');
 const options = {
   totalItems: 0,
-  itemsPerPage: 15,
-  visiblePages: 5,
+  itemsPerPage: 20,
+  visiblePages: 3,
   page: 1,
 };
 const pagination = new Pagination(container, options);
@@ -93,8 +86,8 @@ const page = pagination.getCurrentPage();
 
 trendFilmsFn(page)
   .then(films => {
-      renderCard(films.data.results);
-      pagination.reset(films.data.total_results);
+    renderCard(films.data.results);
+    pagination.reset(films.data.total_results);
   })
   .catch(error => console.log(error.message));
 
@@ -110,10 +103,6 @@ function updatePagination(event) {
   //  })
   //  .catch(error => console.log(error.message));
 }
-
-
-
-
 
 refs.searchForm.addEventListener('submit', handleFormSubmit);
 
