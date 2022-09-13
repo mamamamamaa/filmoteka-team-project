@@ -231,9 +231,12 @@ header.container {
 
   fill: #ffffff;
 
-  cursor: pointer;
+  cursor: pointer;  
 }
 
+.btn__search:hover > .icon__search {
+  fill: #ff001b;
+}
 // .nav__list {
 //   display: flex;
 //   list-style: none;
