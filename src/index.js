@@ -5,6 +5,7 @@ import { searchGenres } from './js/searchGenres';
 
 import toggleModal from './js/futer-modal';
 import { btnUpToTop, topFunction } from './js/btnUp';
+import { disableScroll, scroll } from './js/scrollFns';
 
 import writeLocalStorage from './js/localStorageApi';
 
@@ -19,37 +20,8 @@ const refs = {
   modaHugelCard: document.querySelector('.modal-film__wrapper'),
   tuiContainer: document.querySelector('#tui-pagination-container'),
 };
- 
+
 let query = null;
-
-let currentPosition = '';
-  function disableScroll (){
-    currentPosition = window.scrollY;
-    //refs.modal.classList.toggle('is-hidden');
-    document.body.style.position = 'fixed';
-    document.body.style.top = '-${currentPosition}px'
-    document.body.style.width = '100%';
-    
-    refs.modal.classList.toggle('is-hidden');
-  }
-
-  function scroll (){
-    refs.modal.classList.toggle('is-hidden');
-    document.body.style.position = '';
-    document.body.style.top = '';
-    window.scrollTo({
-      top: currentPosition,
-      behavior: 'instant',
-    })
-    }
-
-
-
-function cardModal() {
-  refs.modal.classList.toggle('is-hidden'); 
-}
-
-
 
 async function renderCard(data) {
   refs.cardBox.innerHTML = '';
@@ -59,12 +31,10 @@ async function renderCard(data) {
 async function trendFilmsFn(page) {
   const films = await trendFilms(page);
   renderCard(films.data.results);
-  // btnUpToTop();
-  // topFunction();
 }
 
- btnUpToTop();
- topFunction();
+btnUpToTop();
+topFunction();
 async function searchFilmsFn(query, page) {
   const search = await searchFilms(query, page);
   renderCard(search.data.results);
@@ -74,12 +44,10 @@ async function searchFilmsFn(query, page) {
   } else {
     refs.tuiContainer.classList.remove('is-hidden');
   }
-  // btnUpToTop();
-  // topFunction();
 }
 
 async function filmInfoFn(info) {
-  console.log(info)
+  console.log(info);
 
   refs.modaHugelCard.innerHTML = '';
   refs.modaHugelCard.insertAdjacentHTML('beforeend', hugeCard(info.data));
@@ -99,8 +67,6 @@ async function handleFormSubmit(e) {
 async function handleCardClick(e) {
   if (e.target.className === 'cards-container') {
     return;
-
-
   }
 
   const card = e.target.closest('.card-container');
@@ -110,9 +76,8 @@ async function handleCardClick(e) {
   disableScroll();
 }
 
+refs.closeModalBtn.addEventListener('click', scroll);
 
-refs.closeModalBtn.addEventListener('click', scroll); 
-  
 const options = {
   totalItems: 0,
   itemsPerPage: 20,
@@ -138,11 +103,9 @@ async function updatePagination(event) {
   const currentPage = event.page;
   refs.tuiContainer.classList.add('is-hidden');
   await trendFilmsFn(currentPage);
-  refs.tuiContainer.classList.remove('is-hidden')
-
+  refs.tuiContainer.classList.remove('is-hidden');
 }
 
 refs.searchForm.addEventListener('submit', handleFormSubmit);
 
 refs.cardBox.addEventListener('click', handleCardClick);
-
