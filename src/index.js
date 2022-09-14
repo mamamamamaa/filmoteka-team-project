@@ -1,11 +1,14 @@
 import { trendFilms, filmGenre, searchFilms, filmInfo } from './js/fetchData';
+import { searchGenres } from './js/searchGenres';
 import card from './js/card-template';
 import hugeCard from './js/hugeCard-template';
-import { searchGenres } from './js/searchGenres';
 
 import toggleModal from './js/futer-modal';
+
 import { btnUpToTop, topFunction } from './js/btnUp';
 import { disableScroll, scroll } from './js/scrollFns';
+
+import { loaderOff } from './js/loader';
 
 import writeLocalStorage from './js/localStorageApi';
 
@@ -19,9 +22,21 @@ const refs = {
   closeModalBtn: document.querySelector('[data-modal-close]'),
   modaHugelCard: document.querySelector('.modal-film__wrapper'),
   tuiContainer: document.querySelector('#tui-pagination-container'),
+  searchNotify: document.querySelector('.search__correct'),
 };
 
 let query = null;
+
+const options = {
+  totalItems: 0,
+  itemsPerPage: 20,
+  visiblePages: 3,
+  page: 1,
+  usageStatistics: false,
+};
+
+const pagination = new Pagination(refs.tuiContainer, options);
+const page = pagination.getCurrentPage();
 
 async function renderCard(data) {
   refs.cardBox.innerHTML = '';
@@ -33,10 +48,14 @@ async function trendFilmsFn(page) {
   renderCard(films.data.results);
 }
 
-btnUpToTop();
-topFunction();
 async function searchFilmsFn(query, page) {
   const search = await searchFilms(query, page);
+  if (search.data.results.length === 0) {
+    loaderOff();
+    refs.searchNotify.classList.remove('is-hidden');
+    return;
+  }
+  refs.searchNotify.classList.add('is-hidden');
   renderCard(search.data.results);
   pagination.reset(search.data.total_results);
   if (search.data.results.length === 0) {
@@ -47,8 +66,6 @@ async function searchFilmsFn(query, page) {
 }
 
 async function filmInfoFn(info) {
-  console.log(info);
-
   refs.modaHugelCard.innerHTML = '';
   refs.modaHugelCard.insertAdjacentHTML('beforeend', hugeCard(info.data));
   writeLocalStorage(info.data);
@@ -76,19 +93,15 @@ async function handleCardClick(e) {
   disableScroll();
 }
 
-refs.closeModalBtn.addEventListener('click', scroll);
+async function updatePagination(event) {
+  const currentPage = event.page;
+  refs.tuiContainer.classList.add('is-hidden');
+  await trendFilmsFn(currentPage);
+  refs.tuiContainer.classList.remove('is-hidden');
+}
 
-const options = {
-  totalItems: 0,
-  itemsPerPage: 20,
-  visiblePages: 3,
-  page: 1,
-  usageStatistics: false,
-};
-
-const pagination = new Pagination(refs.tuiContainer, options);
-const page = pagination.getCurrentPage();
-refs.tuiContainer.classList.add('is-hidden');
+btnUpToTop();
+topFunction();
 
 trendFilms(page)
   .then(films => {
@@ -100,12 +113,9 @@ trendFilms(page)
   })
   .catch(error => console.log(error.message));
 
-async function updatePagination(event) {
-  const currentPage = event.page;
-  refs.tuiContainer.classList.add('is-hidden');
-  await trendFilmsFn(currentPage);
-  refs.tuiContainer.classList.remove('is-hidden');
-}
+refs.closeModalBtn.addEventListener('click', scroll);
+
+refs.tuiContainer.classList.add('is-hidden');
 
 refs.searchForm.addEventListener('submit', handleFormSubmit);
 
