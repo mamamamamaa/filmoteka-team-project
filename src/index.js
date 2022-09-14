@@ -5,6 +5,7 @@ import { searchGenres } from './js/searchGenres';
 
 import toggleModal from './js/futer-modal';
 import { btnUpToTop, topFunction } from './js/btnUp';
+import { disableScroll, scroll } from './js/scrollFns';
 
 import writeLocalStorage from './js/localStorageApi';
 
@@ -22,12 +23,6 @@ const refs = {
 
 let query = null;
 
-function cardModal() {
-  refs.modal.classList.toggle('is-hidden');
-
-  
-}
-
 async function renderCard(data) {
   refs.cardBox.innerHTML = '';
   refs.cardBox.innerHTML += card(data, await filmGenre(), searchGenres);
@@ -36,12 +31,10 @@ async function renderCard(data) {
 async function trendFilmsFn(page) {
   const films = await trendFilms(page);
   renderCard(films.data.results);
-  // btnUpToTop();
-  // topFunction();
 }
 
- btnUpToTop();
- topFunction();
+btnUpToTop();
+topFunction();
 async function searchFilmsFn(query, page) {
   const search = await searchFilms(query, page);
   renderCard(search.data.results);
@@ -51,12 +44,10 @@ async function searchFilmsFn(query, page) {
   } else {
     refs.tuiContainer.classList.remove('is-hidden');
   }
-  // btnUpToTop();
-  // topFunction();
 }
 
 async function filmInfoFn(info) {
-  console.log(info)
+  console.log(info);
 
   refs.modaHugelCard.innerHTML = '';
   refs.modaHugelCard.insertAdjacentHTML('beforeend', hugeCard(info.data));
@@ -82,9 +73,10 @@ async function handleCardClick(e) {
   const id = card.dataset.id;
   const info = await filmInfo(id);
   filmInfoFn(info);
-  refs.cardBox.addEventListener('click', cardModal);
-  refs.closeModalBtn.addEventListener('click', cardModal);
+  disableScroll();
 }
+
+refs.closeModalBtn.addEventListener('click', scroll);
 
 const options = {
   totalItems: 0,
@@ -93,6 +85,7 @@ const options = {
   page: 1,
   usageStatistics: false,
 };
+
 const pagination = new Pagination(refs.tuiContainer, options);
 const page = pagination.getCurrentPage();
 refs.tuiContainer.classList.add('is-hidden');
@@ -111,9 +104,7 @@ async function updatePagination(event) {
   const currentPage = event.page;
   refs.tuiContainer.classList.add('is-hidden');
   await trendFilmsFn(currentPage);
-  refs.tuiContainer.classList
-    .remove('is-hidden')
-
+  refs.tuiContainer.classList.remove('is-hidden');
 }
 
 refs.searchForm.addEventListener('submit', handleFormSubmit);

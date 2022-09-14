@@ -3,6 +3,8 @@ import writeLocalStorage from './js/localStorageApi';
 import { filmInfo } from './js/fetchData';
 import hugeCard from './js/hugeCard-template';
 
+import { disableScroll, scroll } from './js/scrollFns';
+
 const refs = {
   watched: document.querySelector('.watched'),
   queue: document.querySelector('.queue'),
@@ -111,8 +113,7 @@ async function handleCardClick(e) {
   const id = card.dataset.id;
   const info = await filmInfo(id);
   filmInfoFn(info);
-  refs.container.addEventListener('click', cardModal);
-  refs.closeModalBtn.addEventListener('click', cardModal);
+  disableScroll();
 }
 
 async function filmInfoFn(info) {
@@ -121,6 +122,4 @@ async function filmInfoFn(info) {
   writeLocalStorage(info.data);
 }
 
-function cardModal() {
-  refs.modal.classList.toggle('is-hidden');
-}
+refs.closeModalBtn.addEventListener('click', scroll);
