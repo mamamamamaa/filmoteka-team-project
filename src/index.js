@@ -91,6 +91,7 @@ const options = {
   itemsPerPage: 20,
   visiblePages: 3,
   page: 1,
+  usageStatistics: false,
 };
 const pagination = new Pagination(refs.tuiContainer, options);
 const page = pagination.getCurrentPage();
