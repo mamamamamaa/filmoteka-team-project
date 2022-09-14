@@ -22,13 +22,6 @@ body .tui-pagination .tui-last
   display: none;
 }
 
-// @include min-width('medium') {
-//   .tui-page-btn.tui-next-is-ellip.change-next,
-//   .tui-page-btn.tui-prev-is-ellip.change-prev {
-//     display: flex;
-//   }
-// }
-
 body .tui-pagination .tui-next {
   margin-left: 0;
 }
@@ -51,7 +44,7 @@ body .tui-pagination .tui-page-btn {
   color: #000;
   font-family: var(--main-font);
   font-family: 'Roboto';
-  //   @include font(12px, 500, 16px);
+  border: 1px solid #ddd;
   transition: all 250ms ease-in-out;
   &:hover {
     background: var(--brand-orange-color);
