@@ -1,5 +1,4 @@
 import { Loading } from 'notiflix';
-import OnlyScroll from 'only-scrollbar';
 
 export const loaderOn = () => {
   Loading.circle('Loading...', {

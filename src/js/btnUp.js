@@ -17,8 +17,6 @@ export function btnUpToTop() {
     myButton.addEventListener('click', topFunction)
     
 }
-
-   
  
 
 // When the user clicks on the myButton, scroll to the top of the document

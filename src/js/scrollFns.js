@@ -3,7 +3,6 @@ const modal = document.querySelector('[data-modal]');
 
 export function disableScroll() {
   currentPosition = window.scrollY;
-  //refs.modal.classList.toggle('is-hidden');
   document.body.style.position = 'fixed';
   document.body.style.top = '-${currentPosition}px';
   document.body.style.width = '100%';

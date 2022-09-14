@@ -19,7 +19,6 @@ let isModal = false;
 
 export default function toggleMenu() {
   refs.menu.classList.toggle('is-hidden');
-  // document.body.classList.toggle('no-scroll');
   isModal = !isModal;
   if (isModal) {
     window.addEventListener('keydown', onEscKeyPress);
