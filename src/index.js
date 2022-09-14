@@ -56,8 +56,6 @@ async function filmInfoFn(info) {
   refs.modaHugelCard.innerHTML = '';
   refs.modaHugelCard.insertAdjacentHTML('beforeend', hugeCard(info.data));
   writeLocalStorage(info.data);
-  // btnUpToTop();
-  // topFunction();
 }
 
 async function handleFormSubmit(e) {
@@ -107,9 +105,9 @@ function updatePagination(event) {
   const currentPage = event.page;
   refs.tuiContainer.classList.add('is-hidden');
   trendFilmsFn(currentPage)
-  .then(films => {
-    refs.tuiContainer.classList.remove('is-hidden');
-    renderCard(films.data.results);
+    .then(films => {
+      refs.tuiContainer.classList.remove('is-hidden');
+      renderCard(films.data.results);
     })
     .catch(error => console.log(error.message));
 }

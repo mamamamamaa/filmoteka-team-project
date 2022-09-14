@@ -1,10 +1,10 @@
 body .tui-page-btn:not(.tui-first, .tui-last) {
   display: inline-flex;
-    align-items: center;
-    justify-content: center;
+  align-items: center;
+  justify-content: center;
 }
 body .tui-pagination .tui-first-child.tui-is-selected {
-  border-left: 1px solid #ff6b08 ;
+  border-left: 1px solid #ff6b08;
   border-left: none;
 }
 
@@ -23,8 +23,8 @@ body .tui-pagination .tui-first,
 body .tui-pagination .tui-last
 // body .tui-pagination .tui-prev-is-ellip,
 // body .tui-pagination .tui-next-is-ellip
- {
-  display: none ;
+{
+  display: none;
 }
 
 // @include min-width('medium') {
@@ -47,6 +47,7 @@ body .tui-pagination .tui-page-btn {
   // border: none;
   // align-items: center;
   // justify-content: center;
+  margin-right: 5px;
   padding: 0;
   width: 40px;
   height: 40px;
