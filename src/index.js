@@ -19,14 +19,37 @@ const refs = {
   modaHugelCard: document.querySelector('.modal-film__wrapper'),
   tuiContainer: document.querySelector('#tui-pagination-container'),
 };
-
+ 
 let query = null;
 
-function cardModal() {
-  refs.modal.classList.toggle('is-hidden');
+let currentPosition = '';
+  function disableScroll (){
+    currentPosition = window.scrollY;
+    //refs.modal.classList.toggle('is-hidden');
+    document.body.style.position = 'fixed';
+    document.body.style.top = '-${currentPosition}px'
+    document.body.style.width = '100%';
+    
+    refs.modal.classList.toggle('is-hidden');
+  }
 
-  
+  function scroll (){
+    refs.modal.classList.toggle('is-hidden');
+    document.body.style.position = '';
+    document.body.style.top = '';
+    window.scrollTo({
+      top: currentPosition,
+      behavior: 'instant',
+    })
+    }
+
+
+
+function cardModal() {
+  refs.modal.classList.toggle('is-hidden'); 
 }
+
+
 
 async function renderCard(data) {
   refs.cardBox.innerHTML = '';
@@ -76,22 +99,27 @@ async function handleFormSubmit(e) {
 async function handleCardClick(e) {
   if (e.target.className === 'cards-container') {
     return;
+
+
   }
 
   const card = e.target.closest('.card-container');
   const id = card.dataset.id;
   const info = await filmInfo(id);
   filmInfoFn(info);
-  refs.cardBox.addEventListener('click', cardModal);
-  refs.closeModalBtn.addEventListener('click', cardModal);
+  disableScroll();
 }
 
+
+refs.closeModalBtn.addEventListener('click', scroll); 
+  
 const options = {
   totalItems: 0,
   itemsPerPage: 20,
   visiblePages: 3,
   page: 1,
 };
+
 const pagination = new Pagination(refs.tuiContainer, options);
 const page = pagination.getCurrentPage();
 refs.tuiContainer.classList.add('is-hidden');
@@ -110,11 +138,11 @@ async function updatePagination(event) {
   const currentPage = event.page;
   refs.tuiContainer.classList.add('is-hidden');
   await trendFilmsFn(currentPage);
-  refs.tuiContainer.classList
-    .remove('is-hidden')
+  refs.tuiContainer.classList.remove('is-hidden')
 
 }
 
 refs.searchForm.addEventListener('submit', handleFormSubmit);
 
 refs.cardBox.addEventListener('click', handleCardClick);
+

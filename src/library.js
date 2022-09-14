@@ -112,8 +112,14 @@ async function handleCardClick(e) {
   const info = await filmInfo(id);
   filmInfoFn(info);
   refs.container.addEventListener('click', cardModal);
-  refs.closeModalBtn.addEventListener('click', cardModal);
+  refs.closeModalBtn.addEventListener('click', cardModal); 
+  console.log(refs.closeModalBtn);
+console.log(info);
+console.log(id);
+console.log(card);
+
 }
+
 
 async function filmInfoFn(info) {
   refs.modaHugelCard.innerHTML = '';
