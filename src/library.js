@@ -2,6 +2,7 @@ import toggleModal from './js/futer-modal';
 import writeLocalStorage from './js/localStorageApi';
 import { filmInfo } from './js/fetchData';
 import hugeCard from './js/hugeCard-template';
+import { btnUpToTop, topFunction } from './js/btnUp';
 
 import { disableScroll, scroll } from './js/scrollFns';
 
@@ -102,7 +103,9 @@ function markupLibWatched() {
       .join('');
     refs.container.insertAdjacentHTML('beforeend', dataWatchedFromLocalStorage);
   }
+ 
 }
+  
 
 async function handleCardClick(e) {
   if (e.target.className === 'cards-container') {
@@ -113,8 +116,23 @@ async function handleCardClick(e) {
   const id = card.dataset.id;
   const info = await filmInfo(id);
   filmInfoFn(info);
+
+//   refs.container.addEventListener('click', cardModal);
+//   refs.closeModalBtn.addEventListener('click', cardModal); 
+//   console.log(refs.closeModalBtn);
+// console.log(info);
+// console.log(id);
+// console.log(card);
   disableScroll();
+
 }
+
+  btnUpToTop();
+  topFunction();
+
+
+  
+
 
 async function filmInfoFn(info) {
   refs.modaHugelCard.innerHTML = '';
