@@ -103,15 +103,12 @@ trendFilmsFn(page)
 pagination.off('afterMove', updatePagination);
 pagination.on('afterMove', updatePagination);
 
-function updatePagination(event) {
+async function updatePagination(event) {
   const currentPage = event.page;
   refs.tuiContainer.classList.add('is-hidden');
-  trendFilmsFn(currentPage)
-  .then(films => {
-    refs.tuiContainer.classList.remove('is-hidden');
-    renderCard(films.data.results);
-    })
-    .catch(error => console.log(error.message));
+  await trendFilmsFn(currentPage);
+  refs.tuiContainer.classList
+    .remove('is-hidden')
 }
 
 refs.searchForm.addEventListener('submit', handleFormSubmit);
