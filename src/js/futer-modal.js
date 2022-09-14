@@ -18,6 +18,7 @@ document.addEventListener('keydown', onEsc);
 let isModal = false;
 
 export default function toggleMenu() {
+  stopVideos();
   refs.menu.classList.toggle('is-hidden');
   isModal = !isModal;
   if (isModal) {
@@ -30,6 +31,7 @@ export default function toggleMenu() {
 function onEscKeyPress(event) {
   console.log(event);
   if (event.code === 'Escape') {
+    stopVideos();
     refs.menu.classList.add('is-hidden');
     document.body.classList.remove('no-scroll');
     isModal = false;
@@ -39,6 +41,7 @@ function onEscKeyPress(event) {
 
 function onBackDroppClick(event) {
   if (event.currentTarget === event.target) {
+    stopVideos();
     refs.menu.classList.toggle('is-hidden');
   }
 }
@@ -64,9 +67,21 @@ function backDropFilm(event) {
 
 function onEsc(event) {
   if (event.keyCode === 27) {
+    stopVideos();
     refs.modal?.classList.add('is-hidden');
     document.body.classList.remove('no-scroll');
     isModalShown = false;
     window.removeEventListener('keydown', onEsc);
   }
 }
+
+// функция остановки видео при закрытии модального окна
+const stopVideos = () => {
+  document.querySelectorAll('iframe').forEach(v => {
+    v.src = v.src;
+  });
+  document.querySelectorAll('video').forEach(v => {
+    v.pause();
+  });
+};
+// =====================================================
