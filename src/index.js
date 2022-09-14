@@ -24,6 +24,8 @@ let query = null;
 
 function cardModal() {
   refs.modal.classList.toggle('is-hidden');
+
+  
 }
 
 async function renderCard(data) {
@@ -34,10 +36,12 @@ async function renderCard(data) {
 async function trendFilmsFn(page) {
   const films = await trendFilms(page);
   renderCard(films.data.results);
-  btnUpToTop();
-  topFunction();
+  // btnUpToTop();
+  // topFunction();
 }
 
+ btnUpToTop();
+ topFunction();
 async function searchFilmsFn(query, page) {
   const search = await searchFilms(query, page);
   renderCard(search.data.results);
@@ -47,11 +51,13 @@ async function searchFilmsFn(query, page) {
   } else {
     refs.tuiContainer.classList.remove('is-hidden');
   }
-  btnUpToTop();
-  topFunction();
+  // btnUpToTop();
+  // topFunction();
 }
 
 async function filmInfoFn(info) {
+  console.log(info)
+
   refs.modaHugelCard.innerHTML = '';
   refs.modaHugelCard.insertAdjacentHTML('beforeend', hugeCard(info.data));
   writeLocalStorage(info.data);
