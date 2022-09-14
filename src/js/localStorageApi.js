@@ -7,6 +7,7 @@ function addWatchedList(data) {
       list,
       state: 'watched',
       info: {
+        id: data.id,
         poster: data.poster_path || NO_POSTER,
         title: data.title || data.name,
         genres: data.genres.map(e => e.name),
@@ -29,6 +30,7 @@ function addQueueList(data) {
       list,
       state: 'queue',
       info: {
+        id: data.id,
         poster: data.poster_path || NO_POSTER,
         title: data.title || data.name,
         genres: data.genres.map(e => e.name),
