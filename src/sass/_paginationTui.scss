@@ -8,14 +8,9 @@ body .tui-pagination .tui-first-child.tui-is-selected {
   border-left: none;
 }
 
-// .tui-page-btn.tui-prev.hide-prev,
-// .tui-page-btn.tui-first.tui-is-disabled,
-// .tui-page-btn.tui-next.hide-next,
-// .tui-page-btn.tui-last.tui-is-disabled,
-// .tui-page-btn.tui-next-is-ellip.change-next,
-// .tui-page-btn.tui-prev-is-ellip.change-prev {
-//   display: none;
-// }
+body .tui-pagination .tui-first+.tui-prev, .tui-pagination .tui-next+.tui-last {
+border: 1px solid #ddd;
+}
 
 body .tui-pagination .tui-first,
 // body .tui-pagination .tui-prev,
