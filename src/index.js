@@ -106,12 +106,10 @@ pagination.on('afterMove', updatePagination);
 function updatePagination(event) {
   const currentPage = event.page;
   refs.tuiContainer.classList.add('is-hidden');
-  pagination.off('afterMove', updatePagination);
   trendFilmsFn(currentPage)
   .then(films => {
     refs.tuiContainer.classList.remove('is-hidden');
     renderCard(films.data.results);
-    pagination.on('afterMove', updatePagination);
     })
     .catch(error => console.log(error.message));
 }
@@ -119,6 +117,3 @@ function updatePagination(event) {
 refs.searchForm.addEventListener('submit', handleFormSubmit);
 
 refs.cardBox.addEventListener('click', handleCardClick);
-
-// пагинация появлялась после рендера карточек
-
