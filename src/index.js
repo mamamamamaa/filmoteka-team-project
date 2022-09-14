@@ -36,7 +36,6 @@ async function trendFilmsFn(page) {
   renderCard(films.data.results);
   btnUpToTop();
   topFunction();
-  return await trendFilms(page);
 }
 
 async function searchFilmsFn(query, page) {
@@ -93,15 +92,15 @@ const pagination = new Pagination(refs.tuiContainer, options);
 const page = pagination.getCurrentPage();
 refs.tuiContainer.classList.add('is-hidden');
 
-trendFilmsFn(page)
+trendFilms(page)
   .then(films => {
     renderCard(films.data.results);
     refs.tuiContainer.classList.remove('is-hidden');
     pagination.reset(films.data.total_results);
+    pagination.off('afterMove', updatePagination);
+    pagination.on('afterMove', updatePagination);
   })
   .catch(error => console.log(error.message));
-pagination.off('afterMove', updatePagination);
-pagination.on('afterMove', updatePagination);
 
 async function updatePagination(event) {
   const currentPage = event.page;
