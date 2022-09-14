@@ -4,6 +4,8 @@ import { filmInfo } from './js/fetchData';
 import hugeCard from './js/hugeCard-template';
 import { btnUpToTop, topFunction } from './js/btnUp';
 
+import { disableScroll, scroll } from './js/scrollFns';
+
 const refs = {
   watched: document.querySelector('.watched'),
   queue: document.querySelector('.queue'),
@@ -114,6 +116,7 @@ async function handleCardClick(e) {
   const id = card.dataset.id;
   const info = await filmInfo(id);
   filmInfoFn(info);
+
   refs.container.addEventListener('click', cardModal);
   refs.closeModalBtn.addEventListener('click', cardModal); 
   console.log(refs.closeModalBtn);
@@ -126,12 +129,15 @@ console.log(card);
 btnUpToTop();
  topFunction();
 
+
+  disableScroll();
+
+
+
 async function filmInfoFn(info) {
   refs.modaHugelCard.innerHTML = '';
   refs.modaHugelCard.insertAdjacentHTML('beforeend', hugeCard(info.data));
   writeLocalStorage(info.data);
 }
 
-function cardModal() {
-  refs.modal.classList.toggle('is-hidden');
-}
+refs.closeModalBtn.addEventListener('click', scroll);
