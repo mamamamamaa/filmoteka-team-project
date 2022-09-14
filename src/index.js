@@ -9,7 +9,7 @@ import { btnUpToTop, topFunction } from './js/btnUp';
 import writeLocalStorage from './js/localStorageApi';
 
 import Pagination from 'tui-pagination';
-// import 'tui-pagination/dist/tui-pagination.css';
+import 'tui-pagination/dist/tui-pagination.css';
 
 const refs = {
   cardBox: document.querySelector('.cards-container'),
@@ -17,6 +17,7 @@ const refs = {
   modal: document.querySelector('[data-modal]'),
   closeModalBtn: document.querySelector('[data-modal-close]'),
   modaHugelCard: document.querySelector('.modal-film__wrapper'),
+  tuiContainer: document.querySelector('#tui-pagination-container'),
 };
 
 let query = null;
@@ -41,6 +42,12 @@ async function trendFilmsFn(page) {
 async function searchFilmsFn(query, page) {
   const search = await searchFilms(query, page);
   renderCard(search.data.results);
+  pagination.reset(search.data.total_results);
+  if (search.data.results.length === 0) {
+    refs.tuiContainer.classList.add('is-hidden');
+  } else {
+    refs.tuiContainer.classList.remove('is-hidden');
+  }
   btnUpToTop();
   topFunction();
 }
@@ -76,34 +83,35 @@ async function handleCardClick(e) {
   refs.closeModalBtn.addEventListener('click', cardModal);
 }
 
-const container = document.querySelector('#tui-pagination-container');
 const options = {
   totalItems: 0,
   itemsPerPage: 20,
   visiblePages: 3,
   page: 1,
 };
-const pagination = new Pagination(container, options);
+const pagination = new Pagination(refs.tuiContainer, options);
 const page = pagination.getCurrentPage();
+refs.tuiContainer.classList.add('is-hidden');
 
 trendFilmsFn(page)
   .then(films => {
     renderCard(films.data.results);
+    refs.tuiContainer.classList.remove('is-hidden');
     pagination.reset(films.data.total_results);
   })
   .catch(error => console.log(error.message));
-
+pagination.off('afterMove', updatePagination);
 pagination.on('afterMove', updatePagination);
 
 function updatePagination(event) {
   const currentPage = event.page;
-  // console.log(currentPage, event);
-
-  trendFilmsFn(currentPage);
-  //  .then(films => {
-  //    renderCard(films.data.results);
-  //  })
-  //  .catch(error => console.log(error.message));
+  refs.tuiContainer.classList.add('is-hidden');
+  trendFilmsFn(currentPage)
+  .then(films => {
+    refs.tuiContainer.classList.remove('is-hidden');
+    renderCard(films.data.results);
+    })
+    .catch(error => console.log(error.message));
 }
 
 refs.searchForm.addEventListener('submit', handleFormSubmit);
