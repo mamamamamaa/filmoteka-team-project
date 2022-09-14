@@ -55,8 +55,6 @@ async function filmInfoFn(info) {
   refs.modaHugelCard.innerHTML = '';
   refs.modaHugelCard.insertAdjacentHTML('beforeend', hugeCard(info.data));
   writeLocalStorage(info.data);
-  // btnUpToTop();
-  // topFunction();
 }
 
 async function handleFormSubmit(e) {
@@ -108,6 +106,7 @@ async function updatePagination(event) {
   await trendFilmsFn(currentPage);
   refs.tuiContainer.classList
     .remove('is-hidden')
+
 }
 
 refs.searchForm.addEventListener('submit', handleFormSubmit);
