@@ -1,10 +1,14 @@
+$text-color: #000;
+$brand-orange-color: #ff6b08;
+$primary-white-color: #fff;
+
 body .tui-page-btn:not(.tui-first, .tui-last) {
   display: inline-flex;
   align-items: center;
   justify-content: center;
 }
 body .tui-pagination .tui-first-child.tui-is-selected {
-  border-left: 1px solid #ff6b08;
+  border-left: 1px solid $brand-orange-color;
   border-left: none;
 }
 
@@ -31,36 +35,27 @@ body .tui-pagination .tui-prev {
 }
 
 body .tui-pagination .tui-page-btn {
-  // display: flex;
-  // border: none;
-  // align-items: center;
-  // justify-content: center;
   margin-right: 5px;
   padding: 0;
   width: 40px;
   height: 40px;
   border-radius: 5px;
-  color: var(--text-color);
   color: #000;
+  color: $text-color;
   font-family: var(--main-font);
   font-family: 'Roboto';
   border: 1px solid #ddd;
   transition: all 250ms ease-in-out;
   &:hover {
-    background: var(--brand-orange-color);
-    background: #ff6b08;
-    color: var(--primary-white-color);
-    color: #fff;
+    background: $brand-orange-color;
+    color: $primary-white-color;
   }
 }
 
 body .tui-pagination .tui-is-selected {
-  color: var(--primary-white-color);
-  color: #fff;
-  background: var(--brand-orange-color);
-  background: #ff6b08;
-  border-color: var(--brand-orange-color);
-  border-color: #ff6b08;
+  color: $primary-white-color;
+  background: $brand-orange-color;
+  border-color: $brand-orange-color;
 }
 
 .tui-pagination .tui-is-disabled:hover {
@@ -70,7 +65,6 @@ body .tui-pagination .tui-is-selected {
 
 .tui-pagination .hide-first,
 .tui-pagination .hide-last {
-  // background: var(--footer-bg-color);
   background: rgba(247, 247, 247, 0.5);
 }
 
@@ -78,22 +72,15 @@ body .tui-pagination .tui-is-selected {
 .tui-pagination .tui-last-is-ellip:hover,
 .tui-pagination .hide-last:hover,
 .tui-pagination .hide-first:hover {
-  background: var(--brand-orange-color);
-  background: #ff6b08;
+  background: $brand-orange-color;
 }
 
 .tui-pagination .tui-prev-is-ellip:hover > .tui-ico-ellip,
 .tui-pagination .tui-next-is-ellip:hover > .tui-ico-ellip,
 .tui-pagination .hide-first:hover > .tui-ico-first,
 .tui-pagination .hide-last:hover > .tui-ico-last {
-  fill: var(--primary-white-color);
-  fill: #fff;
+  fill: $primary-white-color;
 }
-
-// .tui-pagination .tui-is-selected:hover {
-//   background: var(--brand-orange-color);
-//   background: #ff6b08;
-// }
 
 .tui-pagination .tui-ico-ellip {
   margin-top: 0;
@@ -112,12 +99,10 @@ body .tui-pagination .tui-is-selected {
 .tui-pagination .tui-ico-last {
   width: 16px;
   height: 16px;
-  fill: var(--text-color);
-  fill: #000;
+  fill: $text-color;
   transition: all 250ms ease-in-out;
 }
 
 .tui-pagination .tui-last-child.tui-is-selected {
-  border-right: 1px solid var(--brand-orange-color);
-  border-right: 1px solid #ff6b08;
+  border-right: 1px solid $brand-orange-color;
 }
