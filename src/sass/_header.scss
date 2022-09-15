@@ -13,6 +13,8 @@ p {
 
 header.container {
   height: 230px;
+  max-width: 1280px;
+  // max-width: 2560px;
   background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
     url('/src/images/mobile/mob_bg_header.jpg');
   width: 100%;
@@ -231,7 +233,7 @@ header.container {
 
   fill: #ffffff;
 
-  cursor: pointer;  
+  cursor: pointer;
 }
 
 .btn__search:hover > .icon__search {
