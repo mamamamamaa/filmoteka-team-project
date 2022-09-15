@@ -36,7 +36,7 @@ const options = {
 };
 
 const pagination = new Pagination(refs.tuiContainer, options);
-const page = pagination.getCurrentPage();
+// const pageCurrent = pagination.getCurrentPage();
 
 async function renderCard(data) {
   refs.cardBox.innerHTML = '';
@@ -93,21 +93,29 @@ async function handleCardClick(e) {
   disableScroll();
 }
 
-async function updatePagination(event) {
-  const currentPage = event.page;
+async function updatePagination({page}) {
+  localStorage.setItem(
+    'paginationTuiCurrentPage',
+    JSON.stringify(page)
+  );
   refs.tuiContainer.classList.add('is-hidden');
-  await trendFilmsFn(currentPage);
+  await trendFilmsFn(page);
   refs.tuiContainer.classList.remove('is-hidden');
+}
+
+function getItemLS() {
+ return Number(localStorage.getItem('paginationTuiCurrentPage')) || 1;
 }
 
 btnUpToTop();
 topFunction();
 
-trendFilms(page)
+trendFilms(getItemLS())
   .then(films => {
+    pagination.reset(films.data.total_results);
+    pagination.movePageTo(getItemLS());
     renderCard(films.data.results);
     refs.tuiContainer.classList.remove('is-hidden');
-    pagination.reset(films.data.total_results);
     pagination.off('afterMove', updatePagination);
     pagination.on('afterMove', updatePagination);
   })
