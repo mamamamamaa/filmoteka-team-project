@@ -36,7 +36,8 @@ const options = {
 };
 
 const pagination = new Pagination(refs.tuiContainer, options);
-const page = pagination.getCurrentPage();
+// const page = pagination.getCurrentPage();
+const LSpage = pagination.movePageTo();
 
 async function renderCard(data) {
   refs.cardBox.innerHTML = '';
@@ -93,21 +94,32 @@ async function handleCardClick(e) {
   disableScroll();
 }
 
-async function updatePagination(event) {
-  const currentPage = event.page;
+async function updatePagination({page}) {
+  console.log(page);
+  localStorage.setItem(
+    'paginationTuiCurrentPage',
+    JSON.stringify(page)
+  );
+  console.log(Number(localStorage.getItem('paginationTuiCurrentPage')));
   refs.tuiContainer.classList.add('is-hidden');
-  await trendFilmsFn(currentPage);
+  await trendFilmsFn(page);
   refs.tuiContainer.classList.remove('is-hidden');
 }
 
 btnUpToTop();
 topFunction();
 
-trendFilms(page)
+trendFilms(Number(localStorage.getItem('paginationTuiCurrentPage')) || 1)
   .then(films => {
+    Number.isNaN(Number(localStorage.getItem('paginationTuiCurrentPage'))) && localStorage.setItem('paginationTuiCurrentPage', "1");
+    console.log(films.data);
+    console.log(pagination);
+    pagination.reset(films.data.total_results);
+    pagination.movePageTo(
+      Number(localStorage.getItem('paginationTuiCurrentPage')) || 1
+    );
     renderCard(films.data.results);
     refs.tuiContainer.classList.remove('is-hidden');
-    pagination.reset(films.data.total_results);
     pagination.off('afterMove', updatePagination);
     pagination.on('afterMove', updatePagination);
   })
