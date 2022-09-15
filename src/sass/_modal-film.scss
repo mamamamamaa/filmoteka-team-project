@@ -49,7 +49,6 @@ img {
   }
   @media (min-width: 1024px) {
     width: 806px;
-
   }
 
   font-family: 'Roboto';
@@ -189,6 +188,7 @@ img {
 .modal-film__desc {
   margin-bottom: 20px;
   line-height: 1.67;
+  overflow-y: scroll;
 }
 .modal-film__btn-wrapper {
   display: flex;
