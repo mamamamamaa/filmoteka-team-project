@@ -112,8 +112,6 @@ topFunction();
 
 trendFilms(getItemLS())
   .then(films => {
-    Number.isNaN(Number(localStorage.getItem('paginationTuiCurrentPage'))) &&
-      localStorage.setItem('paginationTuiCurrentPage', '1');
     pagination.reset(films.data.total_results);
     pagination.movePageTo(getItemLS());
     renderCard(films.data.results);
